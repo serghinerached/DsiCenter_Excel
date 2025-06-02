@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Sidebar from "./components/Sidebar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RequestComponent from "./components/RequestComponent"
+import IncidentComponent from "./components/IncidentComponent"
+import TrackerComponent from "./components/TrackerComponent"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Sidebar />
+      <Routes>
+        <Route path="/tracker" element={<TrackerComponent />} /> 
+        <Route path="/tasks/requests"  element={<RequestComponent />} /> 
+        <Route path="/tasks/incidents" element={<IncidentComponent />} /> 
+      </Routes>
+    </Router>
   );
 }
 
+  
 export default App;
