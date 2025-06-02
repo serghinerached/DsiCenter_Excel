@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dsiCenter_Excel/static/css/main.49559287.css",
-    "main.js": "/dsiCenter_Excel/static/js/main.493bcb45.js",
-    "static/js/453.34116e28.chunk.js": "/dsiCenter_Excel/static/js/453.34116e28.chunk.js",
-    "index.html": "/dsiCenter_Excel/index.html",
-    "main.49559287.css.map": "/dsiCenter_Excel/static/css/main.49559287.css.map",
-    "main.493bcb45.js.map": "/dsiCenter_Excel/static/js/main.493bcb45.js.map",
-    "453.34116e28.chunk.js.map": "/dsiCenter_Excel/static/js/453.34116e28.chunk.js.map"
+    "main.css": "/DsiCenter_Excel/static/css/main.49559287.css",
+    "main.js": "/DsiCenter_Excel/static/js/main.7969730d.js",
+    "static/js/453.34116e28.chunk.js": "/DsiCenter_Excel/static/js/453.34116e28.chunk.js",
+    "index.html": "/DsiCenter_Excel/index.html",
+    "main.49559287.css.map": "/DsiCenter_Excel/static/css/main.49559287.css.map",
+    "main.7969730d.js.map": "/DsiCenter_Excel/static/js/main.7969730d.js.map",
+    "453.34116e28.chunk.js.map": "/DsiCenter_Excel/static/js/453.34116e28.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.49559287.css",
-    "static/js/main.493bcb45.js"
+    "static/js/main.7969730d.js"
   ]
 }
