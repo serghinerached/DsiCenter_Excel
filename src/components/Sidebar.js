@@ -47,8 +47,15 @@ const Sidebar = () => {
   const showSidebar = () => setSidebar(!sidebar);
 
   const fToday = () => {
-    const elem = new Date().toLocaleDateString("fr-FR") ;
-    return elem;
+    const dateTodayString = new Date().toLocaleDateString("fr-FR") ;
+    return dateTodayString;
+  };
+
+  const fCurrentTime = () => {
+    const today = new Date();
+    const hour = today.getHours();
+    const currentTime = today.toLocaleTimeString("fr-FR", { hour: 'numeric', hour12: false, minute: 'numeric' });
+    return currentTime;
   };
   
   return (
@@ -69,12 +76,12 @@ const Sidebar = () => {
           </h1>
           <h2
             style={{ textAlign: "right", 
-                     marginLeft: "1200px", 
+                     marginLeft: "800px", 
                      color: "white",
                      fontWeight:"bold"
                     }}
           >
-            {fToday()}
+            {fToday()}  {fCurrentTime()} 
           </h2>
         </Nav>
         <SidebarNav sidebar={sidebar}>

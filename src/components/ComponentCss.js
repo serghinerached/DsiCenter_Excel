@@ -1,8 +1,9 @@
+
 export const styles = {
   thFormat: {
-    backgroundColor: "green",
-    color:"white",
-    fontweight:"bold",
+    backgroundColor: 'green',
+    color:'white',
+    fontweight:'bold',
     textAlign:'center'
     },
   div1: {
@@ -15,23 +16,23 @@ export const styles = {
     paddingTop:'10px'
   },
   tableUser: {
-    width:"30%",
+    width:'30%',
   },
   tableRequestIncident: {
-    width:"90%",
+    width:'90%',
     marginLeft:'50px'
   },
   tableTracker: {
-    width:"90%",
+    width:'90%',
     marginLeft:'80px'
   },
   btnImport:{
     width:'80px',
-    backgroundColor: "green",
-    color:"white",
-    fontweight:"bold",
+    backgroundColor: 'green',
+    color:'white',
+    fontweight:'bold',
     border:'3px solid black',
-    display: "inline-block"
+    display: 'inline-block'
   },
   divImport:{
     marginLeft:'230px',
@@ -39,17 +40,26 @@ export const styles = {
   },
   title:{
     marginLeft:'450px',
-    display: "inline-block",
-    fontweight:"bold",
+    display: 'inline-block',
+    fontweight:'bold',
   },
   p1:{
     marginLeft:'7px',
-    display: "inline-block",
-    color:"green",
-    fontweight:"bold"
+    display: 'inline-block',
+    color:'green',
+    fontweight:'bold'
   },
   p2:{
-    display: "inline-block",
-    fontweight:"bold"
+    display: 'inline-block',
+    fontweight:'bold'
+  },
+  tdIncidents:{
+    border:'1px solid black',
+    padding:5,
+  },
+  tableIncidents:{
+    borderCollapse : 'collapse'
   }
 }
+
+export default styles;
