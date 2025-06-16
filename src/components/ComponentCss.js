@@ -13,7 +13,7 @@ export const styles = {
     paddingLeft:'110px',
   },
   div2: {
-    paddingTop:'10px'
+    paddingTop:'5px'
   },
   tableUser: {
     width:'30%',
@@ -32,7 +32,8 @@ export const styles = {
     color:'white',
     fontweight:'bold',
     border:'3px solid black',
-    display: 'inline-block'
+    display: 'inline-block',
+    marginRight:'5px'
   },
   divImport:{
     marginLeft:'230px',

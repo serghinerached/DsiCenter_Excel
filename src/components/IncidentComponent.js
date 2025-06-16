@@ -10,16 +10,12 @@ class IncidentComponent extends React.Component {
     render () {
 
         return(
-            
             <div style={styles.div2}>
                 <DivPageIncidents/>
-            </div>
-            
+            </div>  
         )
     }
-
 }
-
 
 
 export default IncidentComponent

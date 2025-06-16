@@ -1,6 +1,5 @@
 import {styles} from '../components/ComponentCss';
-import React, {useState} from "react";
-import FileInput from "../components/ReadExcelFileData/FileInput";
+import React, {useState,useRef} from "react";
 import readExcel from "../components/ReadExcelFileData/readExcel";
 
 function DivPageIncidents() {
@@ -42,10 +41,30 @@ function DivPageIncidents() {
    
   };
 
+  const hiddenFileInput = useRef(null);
+
+  const handleClick = () => {
+    hiddenFileInput.current.click();
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    try {
+        const data = await readExcel(file);
+        setExcelData(data);
+    } catch (error) {
+        alert("*** Error reading Excel file",error);
+    }
+  };
+
+
   //-----
   return <div style={styles.divImport} >
-            <h3>Import</h3>
-            <FileInput onFileSelect={handleFileSelect} /> <br/>
+
+            <input type="file" ref={hiddenFileInput} onChange={handleFileChange} style={{ display: 'none' }}  /> <br/>
+            <button style={styles.btnImport} onClick={handleClick}>
+              Import  
+            </button>
 
             <p style={styles.p2}>Last import : 19/05/2025</p>
             <h2 style={styles.title}>INCIDENTS</h2>

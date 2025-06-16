@@ -1,7 +1,8 @@
 import * as XLSX from 'xlsx';
+import React, { useEffect, useState } from "react";
+
 
 const readExcel = (file) => {
-
     return new Promise((resolve, reject) => {
 
         const reader = new FileReader();
@@ -11,12 +12,10 @@ const readExcel = (file) => {
             const workbook = XLSX.read(data,{type: "array"});
             const sheetName = workbook.SheetNames[0];
             const sheet = workbook.Sheets[sheetName];
-            // const excelData = XLSX.utils.sheet_to_json(sheet,{header: 1});
-            const excelData = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: null }); // Ajout de defval
+            const excelJsonData = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: null }); // Ajout de defval
             
-            resolve(excelData);    
+            resolve(excelJsonData);    
         };
-
         reader.onerror = (error) => {
             reject(error);
         };
@@ -24,6 +23,7 @@ const readExcel = (file) => {
         reader.readAsArrayBuffer(file);
 
     });
+    
 };
 
 export default readExcel;

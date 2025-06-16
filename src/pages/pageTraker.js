@@ -1,7 +1,8 @@
 import {styles} from '../components/ComponentCss';
-import React, {useState} from "react";
+import React, {useState,useRef} from "react";
 import FileInput from "../components/ReadExcelFileData/FileInput";
 import readExcel from "../components/ReadExcelFileData/readExcel";
+import ExcelLoader from '../components/ReadExcelFileData/ExcelLoader';
 
 function DivPageTraker() {
 
@@ -18,20 +19,39 @@ function DivPageTraker() {
     }
   };
 
+  const excelDataLoad = ExcelLoader();
+
+   const hiddenFileInput = useRef(null);
+  
+    const handleClick = () => {
+      hiddenFileInput.current.click();
+    };
+  
+    const handleChange = (event) => {
+      const file = event.target.files[0];
+      console.log('Fichier sélectionné :', file);
+      // Vous pouvez lire le fichier ici avec FileReader ou l'envoyer au serveur
+    };
+
 
   //-----
   return <div style={styles.divImport} >
-            <h3>Import</h3>
-            <FileInput onFileSelect={handleFileSelect} /> <br/>
+          
+            <input type="file" ref={hiddenFileInput} onClick={handleChange} style={{ display: 'none' }}  /> <br/>
+           
+            <button style={styles.btnImport} onClick={handleClick}>
+              Import  
+            </button>
+           
+            <p style={styles.p2}> Last import : 19/09/2022</p>
 
-            <p style={styles.p2}>Last import : 19/05/2025</p>
             <h2 style={styles.title}>TRAKER</h2>
             <br/>
             <br/>
 
               <table style={styles.tableIncidents}>
                 
-                {excelData && excelData.length > 0 && excelData.map((row, rowIndex) => (
+                {excelDataLoad && excelDataLoad.length > 0 && excelDataLoad.map((row, rowIndex) => (
                   row && row.length > 0 &&
                   <tbody>
                     
