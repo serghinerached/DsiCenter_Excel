@@ -53,7 +53,7 @@ function DivPageIncidents() {
         const data = await readExcel(file);
         setExcelData(data);
     } catch (error) {
-        alert("*** Error reading this Excel file",error);
+        alert("*** Error reading this Excel file = ",error);
     }
   };
 
