@@ -2,13 +2,12 @@
 // export default ExcelLoader;
 import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
-import DivPageTraker from "../../pages/pageTraker";
 
 function ExcelLoader() {
   const [data, setExcelData] = useState([]);
 
-  useEffect(() => {
-    fetch(process.env.PUBLIC_URL + "/data/Tracker.xlsx") // si dans public/data
+// useEffect(() => {
+      fetch(process.env.PUBLIC_URL + "/data/Tracker.xlsx") // si dans public/data
 
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
@@ -24,7 +23,6 @@ function ExcelLoader() {
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: null });
 
         setExcelData(jsonData);
-        console.log(jsonData);
 
       })
       .catch((error) => {
@@ -32,7 +30,8 @@ function ExcelLoader() {
       }
     );
 
-  }, []);
+    
+//  }, []);
 
   return data; 
 

@@ -1,22 +1,21 @@
 import {styles} from '../components/ComponentCss';
 import React, {useState,useRef} from "react";
 import readExcel from "../components/ReadExcelFileData/readExcel";
+import ExcelLoader from '../components/ReadExcelFileData/ExcelLoader';
+
 
 function DivPageIncidents() {
 
+  // GET DATAS FROM EXCEL
+  const tabDatasExcel = ExcelLoader();
+
+  // DECLARATIONS
   
+  const hiddenFileInput = useRef(null);
   const [excelData, setExcelData] = useState([]);
   
 
-  const handleFileSelect = async (file) => {
-    try {
-        const data = await readExcel(file);
-        setExcelData(data);
-    } catch (error) {
-        alert("*** Error reading Excel file",error);
-    }
-  };
-
+  // FONCTIONS
   const convDate = (date1) => {
     try{
       if(date1 !== "" && date1 !== undefined && date1 !== null) {
@@ -41,28 +40,28 @@ function DivPageIncidents() {
    
   };
 
-  const hiddenFileInput = useRef(null);
 
-  const handleClick = () => {
+  // BUTTON CLICK
+  const handeClickButton = () => {
     hiddenFileInput.current.click();
-  };
+    alert("ok");
+  }; 
 
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
+
+  // SELECT CHANGE
+  const handeSelectChange = () => {
     try {
-        const data = await readExcel(file);
-        setExcelData(data);
+        setExcelData(tabDatasExcel);
     } catch (error) {
         alert("*** Error reading this Excel file = ",error);
     }
   };
 
-
   //-----
   return <div style={styles.divImport} >
 
-            <input type="file" ref={hiddenFileInput} onChange={handleFileChange} style={{ display: 'none' }}  /> <br/>
-            <button style={styles.btnImport} onClick={handleClick}>
+            <input type="file" onChange={handeSelectChange} style={{ display: 'none' }}  /> <br/>
+            <button style={styles.btnImport} ref={hiddenFileInput} onClick={handeClickButton}>
               Import  
             </button>
 
@@ -117,11 +116,12 @@ function DivPageIncidents() {
                       
                   </tr>
                   </tbody>
-                ))}
+                ))};
              
               </table>
 
           </div>
+    
 }
 
 export default DivPageIncidents;

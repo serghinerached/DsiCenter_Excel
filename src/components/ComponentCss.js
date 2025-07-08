@@ -35,12 +35,21 @@ export const styles = {
     display: 'inline-block',
     marginRight:'5px'
   },
+  btnUpdate:{
+    width:'80px',
+    backgroundColor: 'green',
+    color:'white',
+    fontweight:'bold',
+    border:'3px solid black',
+    display: 'inline-block',
+    marginLeft:'10px'
+  },
   divImport:{
     marginLeft:'230px',
     marginBottom:'5px'
   },
   title:{
-    marginLeft:'450px',
+    marginLeft:'250px',
     display: 'inline-block',
     fontweight:'bold',
   },

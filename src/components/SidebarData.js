@@ -25,7 +25,7 @@ export const SidebarData = [
         cName: "sub-nav",
       },
       {
-        title: "Monthly - Wo",
+        title: "Monthly - Wo - FOR TEST",
         path: "/tasks/incidents",
         icon: <FaIcons.FaCalculator />,
         cName: "sub-nav",
@@ -43,8 +43,8 @@ export const SidebarData = [
         cName: "sub-nav",
       },
       {
-        title: "Monthly - Scade",
-        path: "/Reporting/Monthly_Scade",
+        title: "Monthly - Wo Scade",
+        path: "/Reporting/Monthly_WoScade",
         icon: <FaIcons.FaCalculator />,
         cName: "sub-nav",
       },
