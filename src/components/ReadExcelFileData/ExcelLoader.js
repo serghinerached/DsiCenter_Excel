@@ -1,40 +1,21 @@
+// IMPORTATION DATAS EXCEL FILE
 
-// export default ExcelLoader;
-import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
-
-function ExcelLoader() {
-  const [data, setExcelData] = useState([]);
-
-// useEffect(() => {
-      fetch(process.env.PUBLIC_URL + "/data/Tracker.xlsx") // si dans public/data
-
-      .then((res) => {
+ 
+export async function loadExcelData() {
+    try {
+        const res = await fetch(process.env.PUBLIC_URL + "/data/Tracker.xlsx");
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-          console.log(res.headers.get("content-type")); // Vérifie le format
-          return res.arrayBuffer();
-      })
-      .then((ab) => {
+        const ab = await res.arrayBuffer();
         const dataArray = new Uint8Array(ab);
-        const workbook = XLSX.read(dataArray, { type: "array" }); 
-
+        const workbook = XLSX.read(dataArray, { type: "array" });
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: null });
-
-        setExcelData(jsonData);
-
-      })
-      .catch((error) => {
-        console.error("Erreur lors du chargement du fichier :", error);
-      }
-    );
-
-    
-//  }, []);
-
-  return data; 
-
-}; 
-
-export default ExcelLoader;
+        console.log("res ***********", jsonData);
+        return jsonData;
+    } catch (error) {
+        console.error("Erreur dans loadExcelData :", error);
+        return [];
+    }
+}

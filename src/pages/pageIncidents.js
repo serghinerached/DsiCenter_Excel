@@ -1,15 +1,47 @@
 import {styles} from '../components/ComponentCss';
-import React, {useState,useRef} from "react";
-import readExcel from "../components/ReadExcelFileData/readExcel";
-import ExcelLoader from '../components/ReadExcelFileData/ExcelLoader';
+import React, {useState,useRef,useEffect} from "react";
+import { loadExcelData } from '../components/ReadExcelFileData/ExcelLoader';
 
 
 function DivPageIncidents() {
 
-  // GET DATAS FROM EXCEL
-  const tabDatasExcel = ExcelLoader();
-
   // DECLARATIONS
+  const [excelDataLoad, SetExcelDataLoad] = useState([]);
+
+  // CONVERT NUMBER TO DATE STRING
+  const convertNumberToDateString = (excelDateNumber) => {
+    const baseDate = new Date(1900, 0, 1);
+    return (new Date(baseDate.getTime() + (excelDateNumber - 2) * 86400000)).toLocaleDateString();
+  }
+
+  // CONVERT COLUMN NUMBER TO DATE STRING
+  const convertColTabNumberToString = (copyData) => {
+    // Transformation des dates dans les colonnes 1, 10 et 11
+    for (let a = 0; a < Object.keys(copyData[0]).length; a++) {
+      const currentKey = Object.keys(copyData[0])[a];
+      if (a === 1 || a === 10 || a === 11) {
+          for (let b = 1; b < copyData.length; b++) {
+              const cell = copyData[b][currentKey];
+              if (typeof cell === "number") {
+                  copyData[b][currentKey] = convertNumberToDateString(cell);
+              }
+          }
+      }
+    }
+    return copyData;
+  }
+
+  // TRAITEMENT DEMARRAGE
+  /*
+  useEffect(() => {
+    const fetchData = async () => {
+      var copyData = [...await loadExcelData()];
+      copyData = convertColTabNumberToString(copyData);
+      SetExcelDataLoad(copyData);
+    }
+      fetchData();
+  }, [])
+*/
   
   const hiddenFileInput = useRef(null);
   const [excelData, setExcelData] = useState([]);
@@ -44,18 +76,20 @@ function DivPageIncidents() {
   // BUTTON CLICK
   const handeClickButton = () => {
     hiddenFileInput.current.click();
-    alert("ok");
   }; 
 
 
   // SELECT CHANGE
-  const handeSelectChange = () => {
+  const handeSelectChange = async () => {
     try {
-        setExcelData(tabDatasExcel);
+      var copyData = [...await loadExcelData()];
+      copyData = convertColTabNumberToString(copyData);
+      SetExcelDataLoad(excelDataLoad);
     } catch (error) {
-        alert("*** Error reading this Excel file = ",error);
+      alert("*** Error reading this Excel file = ",error);
     }
   };
+
 
   //-----
   return <div style={styles.divImport} >
@@ -72,7 +106,7 @@ function DivPageIncidents() {
 
               <table style={styles.tableIncidents}>
                 
-                {excelData && excelData.length > 0 && excelData.map((row, rowIndex) => (
+                {excelDataLoad && excelDataLoad.length > 0 && excelDataLoad.map((row, rowIndex) => (
                   row && row.length > 0 &&
                   <tbody>
                     

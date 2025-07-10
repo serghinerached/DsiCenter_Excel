@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { loadExcelData } from '../components/ReadExcelFileData/ExcelLoader2';
+import { loadExcelData } from '../components/ReadExcelFileData/ExcelLoader';
 import {styles} from '../components/ComponentCss';
 
 
@@ -9,8 +9,10 @@ const DivPageMonthlyIncidents = () => {
     const [excelData, setExcelData] = useState([]);
     const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1).toString().padStart(2, '0'));
+    const [selectedWeek, setSelectedWeek] = useState("");
     const [needUpdate, setNeedUpdate] = useState(true);
  
+    
     // Get Date Today
     useEffect(() => {
         const fToday = () => {
@@ -26,19 +28,8 @@ const DivPageMonthlyIncidents = () => {
         const fetchData = async () => {
             const dataExcel = await loadExcelData();
             if (dataExcel && dataExcel.length > 0) {
-                const copyData = [...dataExcel];
-                // Transformation des dates dans les colonnes 1, 10 et 11
-                for (let a = 0; a < Object.keys(copyData[0]).length; a++) {
-                    const currentKey = Object.keys(copyData[0])[a];
-                    if (a === 1 || a === 10 || a === 11) {
-                        for (let b = 1; b < copyData.length; b++) {
-                            const cell = copyData[b][currentKey];
-                            if (typeof cell === "number") {
-                                copyData[b][currentKey] = parseExcelDateString(cell);
-                            }
-                        }
-                    }
-                }
+                var copyData = [...dataExcel];
+                copyData = parseColNumberToDateString(copyData);
                 setOriginalData(copyData); // données prêtes à être filtrées
                 setNeedUpdate(true); // déclenche le filtrage
             }
@@ -46,66 +37,131 @@ const DivPageMonthlyIncidents = () => {
         fetchData();
     }, []);
  
+   
+    // CONVERSION NUMBER TO DATE STRING
     const parseExcelDateString = (excelDateNumber) => {
-        // Excel base: 1 Jan 1900 → JS base: 1 Jan 1970
         const baseDate = new Date(1900, 0, 1);
-        // Excel bug: 1900 is considered a leap year → need to subtract 2 days
         return (new Date(baseDate.getTime() + (excelDateNumber - 2) * 86400000)).toLocaleDateString();
     }
+
+    // CONVERSION COLUMN NUMBER TO COLUMN DATE STRING
+    const parseColNumberToDateString = (copyData) => {
+      // Transformation des dates dans les colonnes 1, 10 et 11
+      for (let a = 0; a < Object.keys(copyData[0]).length; a++) {
+        const currentKey = Object.keys(copyData[0])[a];
+        if (a === 1 || a === 10 || a === 11) {
+          for (let b = 1; b < copyData.length; b++) {
+              const cell = copyData[b][currentKey];
+              if (typeof cell === "number") {
+                  copyData[b][currentKey] = parseExcelDateString(cell);
+              }
+          }
+        }
+      }
+      return copyData;
+    }
  
-    const filtrerSelonMoisEtAnnee = (data, mois, annee) => {
+    const filterByYearMonthOrWeek = (data, mois, annee,week) => {
+        const year = `/${annee}`
         const yearMonthSearch = `/${mois}/${annee}`;
-        return data.filter(row =>
-            row[0] === "Week" ||
-            (row[3] === "Incident" && row[1].includes(yearMonthSearch))
-        );
+
+        if(annee === "" && mois === "" && week === "") {
+          return data.filter(row =>
+            row[0] === "Week" || (row[3] === "Incident")
+          );
+        } else {
+            if(annee != "" && mois === "" && week === "") {
+              return data.filter(row =>
+                row[0] === "Week" || (row[3] === "Incident" && row[1].includes(year))
+              );
+            } else {
+                if(annee != "" && mois != "" && week === "") {
+                  return data.filter(row =>
+                    row[0] === "Week" || (row[3] === "Incident" && row[1].includes(yearMonthSearch))
+                  );
+                } else {
+                  if(annee != "" && mois === 0 && week != "") {
+                    return data.filter(row =>
+                      row[3] === "Incident" && row[1].includes(year) && row[0] === parseInt(week)
+                    );
+                  } else { // test an = "" et week != ""
+                    if(annee === "" && week != "") {
+                      alert("Error : Please a year !!");
+                      return null   
+                    }
+                  } 
+                }
+            } 
+        }
+
+        return null;
     };
  
     useEffect(() => {
         if (needUpdate && originalData.length > 0) {
-            const filteredData = filtrerSelonMoisEtAnnee(originalData, selectedMonth, selectedYear);
+            const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek);
             setExcelData(filteredData);
             setNeedUpdate(false);
         }
     }, [needUpdate, selectedMonth, selectedYear, originalData]);
  
+
+  // SELECT YEAR
+  const tabYear = ["2022", "2023", "2024", "2025"];
+  
   const handleSelectYearChange = (event) => {
     setSelectedYear(event.target.value);
   };
+
+  // SELECT MOIS
+  const tabLibMonth = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+
   const handleSelectMonthChange = (event) => {
     setSelectedMonth(event.target.value);
   };
- 
+
+  // SELECT WEEK
+  const tabNumWeek = Array.from({ length: 52 }, (_, i) => i + 1);
+
+  const handleSelectWeekChange = (event) => {
+    setSelectedWeek(event.target.value);
+    setSelectedMonth(0);
+  };
+
+  // BOUTON UPDATE
   const handleUpdateClick = () => {
     setNeedUpdate(true);
   };
+
  
   return (
     <div style={styles.divImport} >
-      <label style={{marginRight:15}}>
-        Year&nbsp;
-        <select name="selectYear" value={selectedYear} onChange={handleSelectYearChange}>
-          <option value="2025">2025</option>
-          <option value="2024">2024</option>
-          <option value="2023">2023</option>
-          <option value="2022">2022</option>
+      
+      <label style={{marginRight:15}}>Year&nbsp;
+        <select id="selectYear" value={selectedYear} onChange={handleSelectYearChange} >
+          <option value="">--All--</option>
+          {tabYear.map((libYear,index) => (
+            <option key={index} value={libYear}>{libYear}</option>
+          ))}
         </select>
       </label>
-      <label>
-        Month&nbsp;
-        <select name="selectMonth" value={selectedMonth} onChange={handleSelectMonthChange}>
-          <option value="01">January</option>
-          <option value="02">February</option>
-          <option value="03">March</option>
-          <option value="04">April</option>
-          <option value="05">May</option>
-          <option value="06">June</option>
-          <option value="07">July</option>
-          <option value="08">August</option>
-          <option value="09">September</option>
-          <option value="10">October</option>
-          <option value="11">November</option>
-          <option value="12">December</option>
+
+      <label style={{marginRight:15}}>Month&nbsp;
+        <select id="selectMonth" value={selectedMonth} onChange={handleSelectMonthChange} >
+          <option value="">--All--</option>
+          {tabLibMonth.map((libMonth, index) => (
+            <option key={index} value={String(index + 1).padStart(2,'0')}>{libMonth}</option>
+          ))}
+        </select>
+      </label>
+
+      <label>Week&nbsp;
+        <select id="selectWeek" value={selectedWeek} onChange={handleSelectWeekChange}>
+          <option value="">--All--</option>
+          {tabNumWeek.map((numWeek, index) => (
+            <option key={index} value={numWeek}>{String(numWeek)}</option>
+          ))}
         </select>
       </label>
  
@@ -113,7 +169,7 @@ const DivPageMonthlyIncidents = () => {
           Update  
         </button>
  
-        <h2 style={styles.title}>MONTHLY - INCIDENTS</h2>
+        <h2 style={styles.title}>INCIDENTS</h2>
         <br/>
         <br/>
  

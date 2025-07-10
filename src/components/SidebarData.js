@@ -31,13 +31,7 @@ export const SidebarData = [
         cName: "sub-nav",
       },
       {
-        title: "Weekly - Incidents",
-        path: "/tasks/packages",
-        icon: <FaIcons.FaCalculator />,
-        cName: "sub-nav",
-      },
-      {
-        title: "Monthly - Incidents",
+        title: "Incidents",
         path: "/Reporting/Monthly_Incidents",
         icon: <FaIcons.FaCalculator />,
         cName: "sub-nav",
