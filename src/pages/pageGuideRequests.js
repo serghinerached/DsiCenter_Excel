@@ -21,22 +21,22 @@ function DivPageGuideRequests() {
     }, [])
     
     // supp lignes vides
-    const excelDataFilter = excelDataLoad.filter((row) => !row.every((cell) => cell == null || cell.toString().trim() === ""));
-    console.log("excelDataFilter ******************");
-    console.log(excelDataFilter)
+    //const excelDataFilter = excelDataLoad.filter((row) => !row.every((cell) => cell == null || cell.toString().trim() === ""));
+   // console.log("excelDataFilter ******************");
+   // console.log(excelDataFilter)
 
 
   //-----
   return <div style={styles.divImport} >
                      
-            <h2 style={styles.title2}>COTS LIST</h2>
+            <h2 style={styles.title2}>COTS LIST : Access requests</h2>
             <br/>
             <br/>
 
               <table style={styles.tableIncidents}>
                 <tbody>
 
-                  {excelDataFilter.map((row, rowIndex) => (
+                  {excelDataLoad.map((row, rowIndex) => (
                       
                     <tr key={row.join("-")+rowIndex}>
                     
@@ -57,8 +57,6 @@ function DivPageGuideRequests() {
                                       (<td style={styles.tdIncidents} key={ColIndex}>{cell}</td>) 
                                  )
 
-
-                              //    (<td style={styles.tdIncidents} key={ColIndex}>{cell}</td>) 
                                 :
                                   (ColIndex === 1 || ColIndex === 3) 
                                   ?
@@ -66,8 +64,8 @@ function DivPageGuideRequests() {
                                   :  
                                     (ColIndex === 4) 
                                     ?
-                                      (<td style={styles.tdIncidents} key={ColIndex}>
-                                        <FaEdit size={20} style={{ cursor: "pointer", color: "blue" }} />
+                                      (<td style={styles.tdIncidentsCol4} key={ColIndex}>
+                                        <FaEdit size={20} style={{ cursor: "pointer", color: "green" }} />
                                       </td>) 
                                     :                                        
                                       null
@@ -86,7 +84,7 @@ function DivPageGuideRequests() {
                                   :  
                                     (ColIndex === 4) 
                                     ?
-                                      (<th style={{textAlign:"center",border:"1px solid black",backgroundColor:"green",padding:5}} key={ColIndex}> </th>) 
+                                      (<th style={{textAlign:"center",border:"1px solid black",backgroundColor:"lightgreen",padding:5}} key={ColIndex}>Message</th>) 
                                     :                              
                                       null
                             ) 

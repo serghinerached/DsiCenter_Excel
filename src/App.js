@@ -6,11 +6,7 @@ import IncidentComponent from "./components/IncidentComponent";
 import TrackerComponent from "./components/TrackerComponent";
 import MonthlyIncidentComponent from "./components/MonthlyIncidentComponent";
 import MonthlyWoScadeComponent from "./components/MonthlyWoScadeComponent";
-<<<<<<< HEAD
 import GuideRequestsComponent from "./components/GuideRequestsComponent";
-=======
-
->>>>>>> f14067ff92e396975595d9416c17038d93c006ed
 
 function App() {
   return (
@@ -22,10 +18,7 @@ function App() {
         <Route path="/tasks/incidents" element={<IncidentComponent />} /> 
         <Route path="/reporting/Monthly_Incidents" element={<MonthlyIncidentComponent />} /> 
         <Route path="/reporting/Monthly_WoScade" element={<MonthlyWoScadeComponent />} /> 
-<<<<<<< HEAD
         <Route path="/Guides/requests" element={<GuideRequestsComponent />} /> 
-=======
->>>>>>> f14067ff92e396975595d9416c17038d93c006ed
 
       </Routes>
     </Router>

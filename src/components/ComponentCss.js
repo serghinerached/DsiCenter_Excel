@@ -53,15 +53,12 @@ export const styles = {
     display: 'inline-block',
     fontweight:'bold',
   },
-<<<<<<< HEAD
    title2:{
     marginLeft:'600px',
     
     display: 'inline-block',
     fontweight:'bold',
   },
-=======
->>>>>>> f14067ff92e396975595d9416c17038d93c006ed
   p1:{
     marginLeft:'7px',
     display: 'inline-block',
@@ -78,16 +75,18 @@ export const styles = {
   },
   tableIncidents:{
     borderCollapse : 'collapse'
-<<<<<<< HEAD
+  },
+   tdIncidentsCol4:{
+    border:'1px solid black',
+    padding:5,
+    textAlign:"center"
   },
   tdIncidentsApp:{
     borderLeft:"1px solid black",
     borderTop:"none",
     padding:5,
   },
-=======
   }
->>>>>>> f14067ff92e396975595d9416c17038d93c006ed
-}
+
 
 export default styles;
