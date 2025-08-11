@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  .home,
+  .tasks,
+  .users{
+    display: flex;
+    margin-left: 260px;
+    font-size: 2rem;
+  }
+  .users{
+    padding-top: 30px;
+    border: 2px solid red;
+  }
+  .h2 {
+    text-align: center;
+  }
+  .tdCenter {
+    text-align: center;
+  }
+ 
+  .td10 {
+    width: 11%;
+    text-align: center;
+  }
+  .td13a {
+    width: 10%;
+    text-align: left;
+  }
+  .td13b {
+    width: 9%;
+    text-align: center;
+  }
+  .td8 {
+    width: 8%;
+    text-align: center;
+  }
+  .td16 {
+    width: 16%;
+    text-align: left;
+  }
+  
