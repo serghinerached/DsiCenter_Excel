@@ -51,6 +51,7 @@ export const SidebarData = [
   },
   {
     title: "Guides",
+<<<<<<< HEAD
     path: "/Guides",
     icon: <FaIcons.FaBook />,
     subNav: [
@@ -72,6 +73,10 @@ export const SidebarData = [
         cName: "sub-nav",
       }
     ]
+=======
+    path: "/guides",
+    icon: <FaIcons.FaBook />,
+>>>>>>> f14067ff92e396975595d9416c17038d93c006ed
   },
   
 ];
