@@ -182,9 +182,7 @@ const DivPageMonthlyIncidents = () => {
                 return (
                   <tr key={rowIndex}>
                     {row.map((cell, cellIndex) => (
-                      <th style={{textAlign: "center",border: "1px solid black",backgroundColor: "lightgreen",padding: 5,}} key={cellIndex} >
-                        {cell}
-                      </th>
+                      <th style={{textAlign: "center",border: "1px solid black",backgroundColor: "lightgreen",padding: 5,}} key={cellIndex} >{cell}</th>
                     ))}
                   </tr>
                 );
@@ -193,9 +191,7 @@ const DivPageMonthlyIncidents = () => {
               return (
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
-                        <td style={{ border: "1px solid #ccc", padding: 5 }} key={cellIndex}>
-                            {cell}
-                        </td>
+                    <td style={{ border: "1px solid black", padding: 5 }} key={cellIndex}>{cell}</td>
                   ))}
                 </tr>
               );

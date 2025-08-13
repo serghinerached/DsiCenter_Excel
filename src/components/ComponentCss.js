@@ -55,7 +55,13 @@ export const styles = {
   },
    title2:{
     marginLeft:'600px',
-    
+    marginTop:'10px',
+    display: 'inline-block',
+    fontweight:'bold',
+  },
+  title3:{
+    marginLeft:'400px',
+    marginTop:'10px',
     display: 'inline-block',
     fontweight:'bold',
   },
@@ -81,11 +87,27 @@ export const styles = {
     padding:5,
     textAlign:"center"
   },
-  tdIncidentsApp:{
-    borderLeft:"1px solid black",
-    borderTop:"none",
-    padding:5,
+  
+  tdIncidentsDatas: {
+    textAlign:"center",
+    border:"1px solid black",
+    backgroundColor:"lightgrey",padding:5
   },
+  colMessages: { 
+    cursor: "pointer",
+    color: "green" 
+  },
+  td1Messages: {
+    border:"1px solid black",
+    fontWeight:"bold",
+    backgroundColor:"lightgrey",
+    padding:"5px",
+  },
+  td2Messages: {
+    border:"1px solid black",
+    padding:"5px",
+    whiteSpace: "pre-line"
+  }
   }
 
 

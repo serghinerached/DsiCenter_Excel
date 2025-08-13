@@ -7,6 +7,8 @@ import TrackerComponent from "./components/TrackerComponent";
 import MonthlyIncidentComponent from "./components/MonthlyIncidentComponent";
 import MonthlyWoScadeComponent from "./components/MonthlyWoScadeComponent";
 import GuideRequestsComponent from "./components/GuideRequestsComponent";
+import GuideRequestsMessagesComponent from "./components/GuideRequestsMessagesComponent";
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <Route path="/reporting/Monthly_Incidents" element={<MonthlyIncidentComponent />} /> 
         <Route path="/reporting/Monthly_WoScade" element={<MonthlyWoScadeComponent />} /> 
         <Route path="/Guides/requests" element={<GuideRequestsComponent />} /> 
+        <Route path="/Guides/requestsMessages/:id" element={<GuideRequestsMessagesComponent />} /> 
 
       </Routes>
     </Router>

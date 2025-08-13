@@ -12,8 +12,8 @@ export async function loadExcelData() {
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: null });
-        console.log("res loadExcelData ***********", jsonData);
-        console.log("res ***********", jsonData);
+        //console.log("res loadExcelData ***********", jsonData);
+        //console.log("res ***********", jsonData);
         return jsonData;
     } catch (error) {
         console.error("Erreur dans loadExcelData :", error);

@@ -1,32 +1,75 @@
 import {styles} from '../components/ComponentCss';
-import React, {useState,useRef,useEffect} from "react";
-import FileInput from "../components/ReadExcelFileData/FileInput";
-import readExcel from "../components/ReadExcelFileData/readExcel";
+import {useState,useRef,useEffect} from "react";
 import { loadExcelDataCotsList } from '../components/ReadExcelFileData/ExcelLoaderCotsList';
 import { FaEdit } from "react-icons/fa"; // Icône "Edit" de FontAwesome
+import { useNavigate } from "react-router-dom";
+
+
 
 function DivPageGuideRequests() {
 
   // DECLARATIONS
   const [excelDataLoad, SetExcelDataLoad] = useState([]);  
-  
-    // TRAITEMENT DEMARRAGE
-    useEffect(() => {
-      const fetchData = async () => {
-        var copyData = [...await loadExcelDataCotsList()];
-      //  console.log(copyData);
-        SetExcelDataLoad(copyData);
-      }
-        fetchData();
-    }, [])
-    
-    // supp lignes vides
-    //const excelDataFilter = excelDataLoad.filter((row) => !row.every((cell) => cell == null || cell.toString().trim() === ""));
-   // console.log("excelDataFilter ******************");
-   // console.log(excelDataFilter)
+  const navigate = useNavigate();
 
+  
+  // TRAITEMENT DEMARRAGE
+  useEffect(() => {
+    const fetchData = async () => {
+      var copyData = [...await loadExcelDataCotsList()];
+      SetExcelDataLoad(copyData);
+    }
+      fetchData();
+  }, [])
+
+  // click icone msg
+  const handleIconClick = (id) => {
+    navigate(`/Guides/requestsMessages/${id}`); // redirection vers /detail/id
+  };
 
   //-----
+   
+    return    <div style={styles.divImport} >
+                     
+                <h2 style={styles.title2}>GUIDE : Access requests</h2>
+                <br/>
+                <br/>
+
+                <table style={styles.tableIncidents}>
+                  <tbody>
+
+                    {excelDataLoad.map((row, rowIndex) => {
+                      if(rowIndex === 0) {
+                        return (
+                          <tr key={rowIndex}>
+                            <th style={styles.tdIncidentsDatas}>{row[0]}</th> 
+                            <th style={styles.tdIncidentsDatas}>{row[3]}</th> 
+                            <th style={styles.tdIncidentsDatas}>Message</th> 
+                          </tr>
+                        )
+                      } else {
+                        if(row[4] !== null){
+                          return (
+                          <tr key={rowIndex}>
+                              <td style={styles.tdIncidents}>{row[0]}</td> 
+                              <td style={styles.tdIncidents} >{row[3]}</td> 
+                              <td style={styles.tdIncidentsCol4}>
+                                <FaEdit size={20} style={styles.colMessages} onClick={() => handleIconClick([row[3],row[4],row[5],row[6],row[7]])}/>
+                              </td> 
+                            </tr>
+                          )
+                        }
+                      }
+
+                    })}
+                      
+                  </tbody>
+                </table>
+
+              </div>        
+
+
+  /* AUTRE SOLUTION
   return <div style={styles.divImport} >
                      
             <h2 style={styles.title2}>COTS LIST : Access requests</h2>
@@ -44,7 +87,7 @@ function DivPageGuideRequests() {
 
                           (rowIndex > 0) // row > 0
                           ?     
-                            (row[4] != null) // si col != vide (group) => c'est une requet
+                            (row[4] !== null) // si col !== vide (group) => c'est une requet
                             ?                  
                               (
                                 (ColIndex === 0) // application
@@ -99,6 +142,7 @@ function DivPageGuideRequests() {
               </table>
 
           </div>
+          */
 }
 
 export default DivPageGuideRequests;
