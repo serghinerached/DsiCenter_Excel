@@ -66,8 +66,8 @@ const Sidebar = () => {
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
           <h1
-            style={{ textAlign: "center", 
-                     marginLeft: "70px", 
+            style={{ textAlign: "left", 
+                     marginLeft: "130px", 
                      color: "white",
                      fontWeight:"bold"
                     }}
