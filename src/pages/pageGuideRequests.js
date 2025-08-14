@@ -54,7 +54,7 @@ function DivPageGuideRequests() {
                               <td style={styles.tdIncidents}>{row[0]}</td> 
                               <td style={styles.tdIncidents} >{row[3]}</td> 
                               <td style={styles.tdIncidentsCol4}>
-                                <FaEdit size={20} style={styles.colMessages} onClick={() => handleIconClick([row[3],row[4],row[5],row[6],row[7]])}/>
+                                <FaEdit size={20} style={styles.colMessages} onClick={() => handleIconClick([row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10],row[11]])}/>
                               </td> 
                             </tr>
                           )

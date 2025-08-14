@@ -103,6 +103,12 @@ export const styles = {
     backgroundColor:"lightgrey",
     padding:"5px",
   },
+  td1Messages2: {
+    border:"1px solid black",
+    fontWeight:"bold",
+    backgroundColor:"lightgreen",
+    padding:"5px",
+  },
   td2Messages: {
     border:"1px solid black",
     padding:"5px",
