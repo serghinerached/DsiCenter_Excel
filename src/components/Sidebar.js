@@ -67,16 +67,14 @@ const Sidebar = () => {
           </NavIcon>
           <h1
             style={{ textAlign: "center", 
-                     marginLeft: "150px", 
+                     marginLeft: "70px", 
                      color: "white",
                      fontWeight:"bold"
                     }}
-          >
-            DSI CENTER (React)
-          </h1>
+          >DSI CENTER (React)</h1>
           <h2
             style={{ textAlign: "right", 
-                     marginLeft: "800px", 
+                     marginLeft: "700px", 
                      color: "white",
                      fontWeight:"bold"
                     }}
