@@ -1,12 +1,12 @@
 import {styles} from '../components/ComponentCss';
-import {useState,useRef,useEffect} from "react";
-import { loadExcelDataCotsList } from '../components/ReadExcelFileData/ExcelLoaderCotsList';
+import {useState,useEffect} from "react";
+import { loadExcelIncidentsHomeCotsList } from '../components/ReadExcelFileData/ExcelLoaderCotsList';
 import { FaEdit } from "react-icons/fa"; // Icône "Edit" de FontAwesome
 import { useNavigate } from "react-router-dom";
 
 
 
-function DivPageGuideRequests() {
+function DivPageGuideIncidentsHome() {
 
   // DECLARATIONS
   const [excelDataLoad, SetExcelDataLoad] = useState([]);  
@@ -16,7 +16,7 @@ function DivPageGuideRequests() {
   // TRAITEMENT DEMARRAGE
   useEffect(() => {
     const fetchData = async () => {
-      var copyData = [...await loadExcelDataCotsList()];
+      var copyData = [...await loadExcelIncidentsHomeCotsList()];
       SetExcelDataLoad(copyData);
     }
       fetchData();
@@ -24,15 +24,37 @@ function DivPageGuideRequests() {
 
   // click icone msg
   const handleIconClick = (id) => {
-    navigate(`/Guides/requestsMessages/${id}`); // redirection vers /detail/id
+    navigate(`/Guides/incidentsMessages/${id}`); // redirection 
   };
 
   //-----
-  
-   
-    return    <div style={styles.divImport} >
+   return  <div style={styles.divImport} >
+             <h2 style={styles.title3}>Incidents - Issues Installatin/Uninstallation</h2>
+            
+
+            <div className="flex justify-center items-center h-screen bg-gray-100">
+                  <svg width="1000" height="600" className="bg-white rounded-lg shadow-lg">
+                    <rect x="360" y="50" width="80" height="40" fill="yellow" stroke="black" />
+                    <text x="400" y="75" textAnchor="middle" fill="black">BEGIN</text>
+
+                    <line x1="400" y1="90" x2="400" y2="120" stroke="black" markerEnd="url(#arrow)" />
+
+                    <rect x="360" y="200" width="80" height="40" fill="yellow" stroke="black" />
+                    <text x="400" y="225" textAnchor="middle" fill="black">END</text>
+
+                    <defs>
+                      <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="black" />
+                      </marker>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+
+  //-------------
+     /* return   <div style={styles.divImport} >
                      
-                <h2 style={styles.title2}>GUIDE : Access requests</h2>
+                <h2 style={styles.title2}>GUIDE : Incidents</h2>
                 <br/>
                 <br/>
 
@@ -44,18 +66,17 @@ function DivPageGuideRequests() {
                         return (
                           <tr key={rowIndex}>
                             <th style={styles.tdIncidentsDatas}>{row[0]}</th> 
-                            <th style={styles.tdIncidentsDatas}>{row[3]}</th> 
-                            <th style={styles.tdIncidentsDatas}>Message</th> 
+                            <th style={styles.tdIncidentsDatas}>Link</th> 
+
                           </tr>
                         )
                       } else {
-                        if(row[4] !== null){
+                        if(row[0] !== null){
                           return (
                           <tr key={rowIndex}>
                               <td style={styles.tdIncidents}>{row[0]}</td> 
-                              <td style={styles.tdIncidents} >{row[3]}</td> 
                               <td style={styles.tdIncidentsCol4}>
-                                <FaEdit size={20} style={styles.colMessages} onClick={() => handleIconClick([row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10],row[11]])}/>
+                                <FaEdit size={20} style={styles.colMessages} onClick={() => handleIconClick([row[0],row[1]])}/>
                               </td> 
                             </tr>
                           )
@@ -68,7 +89,7 @@ function DivPageGuideRequests() {
                 </table>
 
               </div>        
-
+*/
 
   /* AUTRE SOLUTION
   return <div style={styles.divImport} >
@@ -146,4 +167,4 @@ function DivPageGuideRequests() {
           */
 }
 
-export default DivPageGuideRequests;
+export default DivPageGuideIncidentsHome;

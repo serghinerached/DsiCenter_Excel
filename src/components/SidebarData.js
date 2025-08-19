@@ -61,7 +61,7 @@ export const SidebarData = [
       },
       {
         title: "Incidents",
-        path: "/Guides/incidents",
+        path: "/Guides/incidentsHome",
         icon: <FaIcons.FaCalculator />,
         cName: "sub-nav",
       },
