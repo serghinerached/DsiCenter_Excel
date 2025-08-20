@@ -23,24 +23,33 @@ function DivPageGuideIncidentsHome() {
   }, [])
 
   // click icone msg
-  const handleIconClick = (id) => {
-    navigate(`/Guides/incidentsMessages/${id}`); // redirection 
+  const fMessage = (numMessage) => {
+    alert(numMessage);
   };
+
 
   //-----
    return  <div style={styles.divImport} >
-             <h2 style={styles.title3}>Incidents - Issues Installatin/Uninstallation</h2>
+            <h2 style={styles.title3}>Incidents - Issues Installation/Uninstallation</h2>
             
-
             <div className="flex justify-center items-center h-screen bg-gray-100">
                   <svg width="1000" height="600" className="bg-white rounded-lg shadow-lg">
-                    <rect x="360" y="50" width="80" height="40" fill="yellow" stroke="black" />
-                    <text x="400" y="75" textAnchor="middle" fill="black">BEGIN</text>
+                    
 
-                    <line x1="400" y1="90" x2="400" y2="120" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="500,30 580,80 500,130 420,80" fill={"orange"} />
+                    <text x="500" y="85" textAnchor="middle" fill="black">Name/Version ?</text>
+                    <line x1="580" y1="80" x2="649" y2="80" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="500" y1="130" x2="500" y2="160" stroke="black" markerEnd="url(#arrow)" />
 
-                    <rect x="360" y="200" width="80" height="40" fill="yellow" stroke="black" />
-                    <text x="400" y="225" textAnchor="middle" fill="black">END</text>
+                    <rect x="650" y="55" width="50" height="40" fill="cyan" stroke="black" />
+                    <text x="675" y="80" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={() => fMessage("1A")}>1A</text>
+
+                    <polygon points="500,160 580,190 500,220 420,190" fill={"orange"} />
+                    <text x="500" y="195" textAnchor="middle" fill="black">How i do ?</text>
+                    <line x1="500" y1="220" x2="500" y2="250" stroke="black" markerEnd="url(#arrow)" />
+
+                    <rect x="475" y="250" width="50" height="40" fill="cyan" stroke="black" />
+                    <text x="500" y="275" textAnchor="middle" fill="black">1B</text>
 
                     <defs>
                       <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">

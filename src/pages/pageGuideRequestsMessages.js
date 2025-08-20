@@ -105,7 +105,7 @@ function DivPageGuideRequestsMessages() {
                 <table style={styles.tableIncidents}>
                   <tbody>
                     <tr>
-                      <td style={styles.td1Messages2} >On hold</td>
+                      <td style={styles.td1Messages2} >Pending</td>
                     </tr>
                     <tr>
                       <td style={styles.td1Messages}>Work Notes</td><td style={styles.td2Messages}>{messageWorkNotesOnHold}</td>
