@@ -20,7 +20,7 @@ export async function loadExcelDataCotsList() {
     }
 }
 
-export async function loadExcelMessagesCotsList() {
+export async function loadExcelRequestsMessagesCotsList() {
     try {
         const res = await fetch(process.env.PUBLIC_URL + "/data/CotsList.xlsx");
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
@@ -38,7 +38,7 @@ export async function loadExcelMessagesCotsList() {
     }
 }
 
-export async function loadExcelIncidentsHomeCotsList() {
+export async function loadExcelIncidentsMessagesCotsList() {
     try {
         const res = await fetch(process.env.PUBLIC_URL + "/data/CotsList.xlsx");
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);

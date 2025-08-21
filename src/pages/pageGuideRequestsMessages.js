@@ -1,6 +1,6 @@
 import {styles} from '../components/ComponentCss';
 import {useState,useEffect} from "react";
-import { loadExcelMessagesCotsList } from '../components/ReadExcelFileData/ExcelLoaderCotsList';
+import { loadExcelRequestsMessagesCotsList } from '../components/ReadExcelFileData/ExcelLoaderCotsList';
 import { useParams } from 'react-router-dom';
 
 function DivPageGuideRequestsMessages() {
@@ -22,7 +22,7 @@ function DivPageGuideRequestsMessages() {
   // TRAITEMENT DEMARRAGE
   useEffect(() => {
     const fetchData = async () => {
-      var copyData = [...await loadExcelMessagesCotsList()];
+      var copyData = [...await loadExcelRequestsMessagesCotsList()];
       SetExcelMessagesLoad(copyData);
     }
       fetchData();
