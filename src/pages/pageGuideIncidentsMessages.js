@@ -26,9 +26,13 @@ function DivPageGuideIncidentsMessages() {
     if (excelMessagesLoad[i][0] === null) {
       break;
     }
-    var textMessage;
+    var addComments;
     if (excelMessagesLoad[i][0] === nameMessage) {
-      textMessage = excelMessagesLoad[i][1];
+      addComments = excelMessagesLoad[i][1];
+    }
+    var wNotes;
+    if (excelMessagesLoad[i][0] === nameMessage) {
+      wNotes = excelMessagesLoad[i][2];
       break;
     }
   }
@@ -42,7 +46,10 @@ function DivPageGuideIncidentsMessages() {
                       <td style={styles.td1Messages}>Message</td><td style={styles.td2Messages}>{nameMessage}</td>
                     </tr>
                     <tr>
-                      <td style={styles.td1Messages}>Text</td><td style={styles.td2Messages}>{textMessage}</td>
+                      <td style={styles.td1Messages}>Add. comments</td><td style={styles.td2Messages}>{addComments}</td>
+                    </tr>
+                     <tr>
+                      <td style={styles.td1Messages}>Work notes</td><td style={styles.td2Messages}>{wNotes}</td>
                     </tr>
                   </tbody>
                 </table>

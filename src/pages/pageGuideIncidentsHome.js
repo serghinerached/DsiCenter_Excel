@@ -52,8 +52,22 @@ function DivPageGuideIncidentsHome() {
                     <polygon points="610,330 690,360 610,390 530,360" fill={"orange"} />
                     <text x="612" y="365" textAnchor="middle" fill="black">Success ?</text>
 
-                    <rect x="580" y="600" width="70" height="40" fill="pink" stroke="black" />
-                    <text x="615" y="622" textAnchor="middle" fill="black">Resolve</text>
+                    <polygon points="410,360 490,390 410,420 330,390" fill={"orange"} />
+                    <text x="409" y="395" textAnchor="middle" fill="black">Airbus site ?</text>
+
+                    <rect x="266" y="450" width="77" height="50" fill="cyan" stroke="black" />
+                    <text x="305" y="474" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={() => fMessage("Msg 1D")}>
+                      Msg 1D<tspan x="305" dy="1em">(Techbar)</tspan>
+                    </text>
+
+                    <rect x="380" y="450" width="77" height="50" fill="cyan" stroke="black" />
+                    <text x="415" y="474" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={() => fMessage("Msg 1E")}>
+                      Msg 1E<tspan x="415" dy="1em">(Remote)</tspan>
+                    </text>
+
+                    <line x1="610" y1="390" x2="610" y2="600" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="576" y="600" width="70" height="40" fill="pink" stroke="black" />
+                    <text x="612" y="622" textAnchor="middle" fill="black">Resolve</text>
 
 
                     <defs>
