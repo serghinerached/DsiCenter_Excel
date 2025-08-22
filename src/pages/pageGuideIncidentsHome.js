@@ -32,43 +32,38 @@ function DivPageGuideIncidentsHome() {
                     <rect x="650" y="55" width="60" height="40" fill="cyan" stroke="black" />
                     <text x="680" y="80" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={() => fMessage("Msg 1A")}>Msg 1A</text>
 
-                    <polygon points="500,160 580,190 500,220 420,190" fill={"orange"} />
-                    <text x="500" y="195" textAnchor="middle" fill="black">How i do ?</text>
-                    <line x1="500" y1="220" x2="500" y2="250" stroke="black" markerEnd="url(#arrow)" />
 
-                    <rect x="470" y="250" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="500" y="275" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={() => fMessage("Msg 1B")}>Msg 1B</text>
+                    <rect x="470" y="160" width="60" height="40" fill="cyan" stroke="black" />
+                    <text x="500" y="185" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={() => fMessage("Msg 1B")}>Msg 1B</text>
+                  
+                    <line x1="500" y1="200" x2="500" y2="230" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="500,230 580,260 500,290 420,260" fill={"orange"} />
+                    <text x="500" y="265" textAnchor="middle" fill="black">Success ?</text>
 
-                    <line x1="578" y1="190" x2="650" y2="190" stroke="black" markerEnd="url(#arrow)" />
-                    <polygon points="730,160 810,190 730,220 650,190" fill={"orange"} />
-                    <text x="730" y="195" textAnchor="middle" fill="black">Issue ?</text>
-                    <line x1="730" y1="220" x2="730" y2="250" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="578" y1="260" x2="649" y2="260" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="729,230 809,260 729,300 649,260" fill={"orange"} />
+                    <text x="729" y="267" textAnchor="middle" fill="black">Airbus site ?</text>
 
-                    <rect x="700" y="250" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="730" y="275" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={() => fMessage("Msg 1C")}>Msg 1C</text>
-
-                    <line x1="500" y1="291" x2="600" y2="330" stroke="black" markerEnd="url(#arrow)" />
-                    <line x1="730" y1="291" x2="620" y2="330" stroke="black" markerEnd="url(#arrow)" />
-                    <polygon points="610,330 690,360 610,390 530,360" fill={"orange"} />
-                    <text x="612" y="365" textAnchor="middle" fill="black">Success ?</text>
-
-                    <polygon points="410,360 490,390 410,420 330,390" fill={"orange"} />
-                    <text x="409" y="395" textAnchor="middle" fill="black">Airbus site ?</text>
-
-                    <rect x="266" y="450" width="77" height="50" fill="cyan" stroke="black" />
-                    <text x="305" y="474" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={() => fMessage("Msg 1D")}>
-                      Msg 1D<tspan x="305" dy="1em">(Techbar)</tspan>
+                    <line x1="727" y1="300" x2="727" y2="327" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="690" y="330" width="77" height="50" fill="cyan" stroke="black" />
+                    <text x="727" y="350" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={() => fMessage("Msg 1C")}>
+                      Msg 1C<tspan x="727" dy="1em">(Techbar)</tspan>
                     </text>
+                    <line x1="730" y1="380" x2="730" y2="410" stroke="black"  />
 
-                    <rect x="380" y="450" width="77" height="50" fill="cyan" stroke="black" />
-                    <text x="415" y="474" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={() => fMessage("Msg 1E")}>
-                      Msg 1E<tspan x="415" dy="1em">(Remote)</tspan>
+
+                    <line x1="808" y1="260" x2="808" y2="330" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="790" y="330" width="77" height="50" fill="cyan" stroke="black" />
+                    <text x="827" y="350" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={() => fMessage("Msg 1D")}>
+                      Msg 1D<tspan x="827" dy="1em">(Remote)</tspan>
                     </text>
+                    <line x1="830" y1="380" x2="830" y2="410" stroke="black"  />
 
-                    <line x1="610" y1="390" x2="610" y2="600" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="576" y="600" width="70" height="40" fill="pink" stroke="black" />
-                    <text x="612" y="622" textAnchor="middle" fill="black">Resolve</text>
-
+                    <line x1="500" y1="290" x2="500" y2="330" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="465" y="330" width="70" height="40" fill="pink" stroke="black" />
+                    <text x="500" y="355" textAnchor="middle" fill="black">Resolve</text>
+                    <line x1="830" y1="410" x2="500" y2="410" stroke="black"  />
+                    <line x1="500" y1="410" x2="500" y2="373" stroke="black"  markerEnd="url(#arrow)" />
 
                     <defs>
                       <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
