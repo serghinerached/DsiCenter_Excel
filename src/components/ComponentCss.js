@@ -46,7 +46,8 @@ export const styles = {
   },
   divImport:{
     marginLeft:'230px',
-    marginBottom:'5px'
+    marginBottom:'5px',
+
   },
   title:{
     marginLeft:'250px',

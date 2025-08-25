@@ -26,10 +26,10 @@ const NavIcon = styled(Link)`
   
 const SidebarNav = styled.nav`
   background: #15171c;
-  width: 180px;
+  width: 220px;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   position: fixed;
   top: 0;
   left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
@@ -38,7 +38,7 @@ const SidebarNav = styled.nav`
 `;
   
 const SidebarWrap = styled.div`
-  width: 100%;
+  width: 88%;
 `;
   
 const Sidebar = () => {
@@ -67,7 +67,7 @@ const Sidebar = () => {
           </NavIcon>
           <h1
             style={{ textAlign: "left", 
-                     marginLeft: "130px", 
+                     marginLeft: "170px", 
                      color: "white",
                      fontWeight:"bold"
                     }}

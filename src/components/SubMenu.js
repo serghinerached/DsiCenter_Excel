@@ -20,58 +20,29 @@ const SidebarLink = styled(Link)`
   }
 `;
   
-const SidebarLabel = styled.span`
-  margin-left: 16px;
-`;
-  
-const DropdownLink = styled(Link)`
-  background: #252831;
-  height: 60px;
-  padding-left: 3rem;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #f5f5f5;
-  font-size: 18px;
-  
-  &:hover {
-    background: green;
-    cursor: pointer;
-  }
-`;
-  
-const SubMenu = ({ item }) => {
+
+const SubMenu = ({ item, depth = 0 }) => {
   const [subnav, setSubnav] = useState(false);
-  
-  const showSubnav = () => setSubnav(!subnav);
-  
+
+  const toggleSubnav = () => setSubnav(!subnav);
+
   return (
-    <>
-      <SidebarLink to={item.path} 
-      onClick={item.subNav && showSubnav}>
-        <div>
-          {item.icon}
-          <SidebarLabel>{item.title}</SidebarLabel>
+    <div style={{ paddingLeft: depth * 15 }}> {/* indentation visuelle */}
+      <SidebarLink to={item.path} className="sidebar-link" onClick={item.subNav ? toggleSubnav : undefined}  >
+        <div className="flex items-center gap-2">
+          {item.icon} <span>{item.title}</span>
         </div>
         <div>
-          {item.subNav && subnav
-            ? item.iconOpened
-            : item.subNav
-            ? item.iconClosed
-            : null}
+          {item.subNav && (subnav ? item.iconOpened || "▲" : item.iconClosed || "▼")}
         </div>
       </SidebarLink>
-      {subnav &&
-        item.subNav.map((item, index) => {
-          return (
-            <DropdownLink to={item.path} key={index}>
-              {item.icon}
-              <SidebarLabel>{item.title}</SidebarLabel>
-            </DropdownLink>
-          );
-        })}
-    </>
+
+      {subnav && item.subNav?.map((subItem, index) => (
+          <SubMenu key={index} item={subItem} depth={depth + 1} />
+      ))}
+    </div>
   );
 };
-  
+
+
 export default SubMenu;
