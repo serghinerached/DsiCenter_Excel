@@ -102,7 +102,7 @@ export const styles = {
     border:"1px solid black",
     fontWeight:"bold",
     backgroundColor:"lightgrey",
-    padding:"5px",
+    padding:"1px",
   },
   td1Messages2: {
     border:"1px solid black",
