@@ -63,64 +63,6 @@ export const SidebarData = [
         title: "Incidents",
         path: "/Guides/Incidents",
         icon: <FaIcons.FaCalculator />,
-      subNav: [
-      {
-        title: "Free",
-        path: "/Guides/incidentsFree",
-        icon: <FaIcons.FaCalculator />,
-      subNav: [
-      {
-        title: "Installation",
-        path: "/Guides/incidentsFree/Installation",
-        icon: <FaIcons.FaCalculator />,
-        cName: "sub-nav",
-      },
-      {
-        title: "Issue",
-        path: "/Guides/incidentsFree/Issue",
-        icon: <FaIcons.FaCalculator />,
-        cName: "sub-nav",
-      }
-    ]
-      },
-      {
-        title: "Pull user",
-        path: "/Guides/incidentsHome/pullUser",
-        icon: <FaIcons.FaCalculator />,
-        subNav: [
-        {
-          title: "Installation",
-          path: "/Guides/incidentsFree",
-          icon: <FaIcons.FaCalculator />,
-          cName: "sub-nav",
-        },
-        {
-          title: "Issue",
-          path: "/Guides/incidentsHome/pullUser",
-          icon: <FaIcons.FaCalculator />,
-          cName: "sub-nav",
-        }
-      ]
-      },
-      {title: "Remote",
-        path: "/Guides/incidentsHome/remoteControl",
-        icon: <FaIcons.FaCalculator />,
-        subNav: [
-        {
-          title: "Installation",
-          path: "/Guides/incidentsFree",
-          icon: <FaIcons.FaCalculator />,
-          cName: "sub-nav",
-        },
-        {
-          title: "Issue",
-          path: "/Guides/incidentsHome/pullUser",
-          icon: <FaIcons.FaCalculator />,
-          cName: "sub-nav",
-        }
-      ]
-      }
-    ],
       },
       {title: "Packages",
         path: "/Guides/packages",

@@ -8,8 +8,7 @@ import MonthlyIncidentComponent from "./components/MonthlyIncidentComponent";
 import MonthlyWoScadeComponent from "./components/MonthlyWoScadeComponent";
 import GuideRequestsComponent from "./components/GuideRequestsComponent";
 import GuideRequestsMessagesComponent from "./components/GuideRequestsMessagesComponent";
-import GuideIncidentsFreeInstallationComponent from "./components/GuideIncidentsFreeInstallationComponent"
-import GuideIncidentsFreeIssueComponent from "./components/GuideIncidentsFreeIssueComponent";
+import GuideIncidentsComponent from "./components/GuideIncidentsComponent"
 import GuideIncidentsMessageComponent from "./components/GuideIncidentsMessagesComponent"
 
 function App() {
@@ -24,8 +23,7 @@ function App() {
         <Route path="/reporting/Monthly_WoScade" element={<MonthlyWoScadeComponent />} /> 
         <Route path="/Guides/requests" element={<GuideRequestsComponent />} /> 
         <Route path="/Guides/requestsMessages/:id" element={<GuideRequestsMessagesComponent />} /> 
-        <Route path="/Guides/incidentsFree/Installation" element={<GuideIncidentsFreeInstallationComponent />} /> 
-        <Route path="/Guides/incidentsFree/Issue" element={<GuideIncidentsFreeIssueComponent />} /> 
+        <Route path="/Guides/Incidents" element={<GuideIncidentsComponent />} /> 
         <Route path="/Guides/incidentsMessages/:id" element={<GuideIncidentsMessageComponent/>} /> 
 
       </Routes>

@@ -44,6 +44,14 @@ export const styles = {
     display: 'inline-block',
     marginLeft:'10px'
   },
+    btnOk: {
+    width:'50px',
+    backgroundColor: 'green',
+    color:'white',
+    fontweight:'bold',
+    border:'3px solid black',
+    display: 'inline-block',
+  },
   divImport:{
     marginLeft:'230px',
     marginBottom:'5px',
