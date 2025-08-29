@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/DsiCenter_Excel/static/css/main.49559287.css",
-    "main.js": "/DsiCenter_Excel/static/js/main.2b29e436.js",
+    "main.js": "/DsiCenter_Excel/static/js/main.abd1fe61.js",
     "static/js/453.34116e28.chunk.js": "/DsiCenter_Excel/static/js/453.34116e28.chunk.js",
     "index.html": "/DsiCenter_Excel/index.html",
     "main.49559287.css.map": "/DsiCenter_Excel/static/css/main.49559287.css.map",
-    "main.2b29e436.js.map": "/DsiCenter_Excel/static/js/main.2b29e436.js.map",
+    "main.abd1fe61.js.map": "/DsiCenter_Excel/static/js/main.abd1fe61.js.map",
     "453.34116e28.chunk.js.map": "/DsiCenter_Excel/static/js/453.34116e28.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.49559287.css",
-    "static/js/main.2b29e436.js"
+    "static/js/main.abd1fe61.js"
   ]
 }
