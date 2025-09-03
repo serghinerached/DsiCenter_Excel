@@ -62,23 +62,37 @@ function DivPageGuideIncidentsPullUserIssue() {
                     <polygon points="153,230 223,260 153,290 83,260" fill={"orange"} />
                     <text x="153" y="265" textAnchor="middle" fill="black">Net user ?</text>
 
-                    <line x1="221" y1="260" x2="285" y2="260" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="285" y="240" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="315" y="265" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2C" }))}>Msg 2C</text>
-                    
+                    <line x1="221" y1="260" x2="261" y2="260" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="265" y="240" width="60" height="40" fill="cyan" stroke="black" />
+                    <text x="295" y="265" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2C" }))}>Msg 2C</text>
+                    <line x1="325" y1="260" x2="365" y2="260" stroke="black" markerEnd="url(#arrow)" />
+
+                    <polygon points="475,230 585,260 475,290 365,260" fill={"orange"} />
+                    <text x="478" y="265" textAnchor="middle" fill="black">Airbus installation ?</text>
+                    <line x1="475" y1="230" x2="157" y2="229" stroke="black" markerEnd="url(#arrow)" />
+
+                    <line x1="583" y1="260" x2="583" y2="200" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="550" y="160" width="60" height="40" fill="cyan" stroke="black" />
+                    <text x="580" y="185" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2D" }))}>Msg 2D</text>
+                    <line x1="550" y1="180" x2="155" y2="220" stroke="black" markerEnd="url(#arrow)" />
 
 
                     <line x1="153" y1="290" x2="153" y2="310" stroke="black" markerEnd="url(#arrow)" />
                     <polygon points="153,310 223,330 153,360 83,330" fill={"orange"} />
                     <text x="153" y="337" textAnchor="middle" fill="black">Request ?</text>
 
+                    <line x1="221" y1="330" x2="261" y2="266" stroke="black" markerEnd="url(#arrow)" />
+
+                    xx<line x1="153" y1="360" x2="153" y2="390" stroke="black"  markerEnd="url(#arrow)" />
+                    <polygon points="153,390 283,420 153,440 23,420" fill={"orange"} />
+                    <text x="153" y="423" textAnchor="middle" fill="black">Need Admin rights ?</text>
+
                     <line x1="28" y1="330" x2="10" y2="330" stroke="black"  />
                     <line x1="10" y1="330" x2="10" y2="630" stroke="black"  />
                     <line x1="10" y1="630" x2="122" y2="630" stroke="black"  markerEnd="url(#arrow)" />
 
-                    <line x1="153" y1="360" x2="153" y2="390" stroke="black"  markerEnd="url(#arrow)" />
-                    <rect x="123" y="390" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="153" y="415" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 1C" }))}>Msg 1C</text>
+                    <rect x="123" y="490" width="60" height="40" fill="cyan" stroke="black" />
+                    <text x="153" y="515" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 1C" }))}>Msg 1C</text>
                     
                     <line x1="153" y1="430" x2="153" y2="460" stroke="black"  markerEnd="url(#arrow)" />
                     <polygon points="153,460 283,480 153,510 23,480" fill={"orange"} />

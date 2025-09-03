@@ -77,10 +77,9 @@ function DivPageGuideIncidentsFreeIssue() {
                     <line x1="560" y1="260" x2="560" y2="330" stroke="black" />
                     <line x1="560" y1="330" x2="283" y2="330" stroke="black" markerEnd="url(#arrow)" />
                    
-
                     <line x1="153" y1="290" x2="153" y2="310" stroke="black" markerEnd="url(#arrow)" />
                     <polygon points="153,310 283,330 153,360 23,330" fill={"orange"} />
-                    <text x="153" y="330" textAnchor="middle" fill="black">Need Admin rights ?</text>
+                    <text x="153" y="336" textAnchor="middle" fill="black">Need Admin rights ?</text>
 
                     <line x1="28" y1="330" x2="10" y2="330" stroke="black"  />
                     <line x1="10" y1="330" x2="10" y2="630" stroke="black"  />
