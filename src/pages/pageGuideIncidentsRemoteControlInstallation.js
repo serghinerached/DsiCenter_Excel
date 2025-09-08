@@ -45,7 +45,7 @@ function DivPageGuideIncidentsRemoteControlInstallation() {
               <tr>
                 <td style={{border:"1px solid black",textAlign:"left"}}>
 
-                  <svg width="630" height="650" >
+                  <svg width="750" height="650" >
 
                     {/* gestion des fleches */}
                     <defs>
@@ -92,10 +92,31 @@ function DivPageGuideIncidentsRemoteControlInstallation() {
                     <rect x="125" y="252" width="60" height="40" fill="cyan" stroke="black" />
                     <text x="155" y="275" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 4A" }))}>Msg 4A</text>
                     
-                    <line x1="222" y1="190" x2="401" y2="190" stroke="black" markerStart="url(#arrow-start)" markerEnd="url(#arrow-end)" />
-                    <polygon points="445,160 490,190 445,220 400,190" fill={"orange"} />
-                    <text x="446" y="195" textAnchor="middle" fill="black">is issue ?</text>
-                    <line x1="445" y1="220" x2="160" y2="320" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="222" y1="190" x2="350" y2="130" stroke="black" markerStart="url(#arrow-start)" markerEnd="url(#arrow-end)" />
+                    <polygon points="445,100 540,130 445,160 350,130" fill={"orange"} />
+                    <text x="446" y="135" textAnchor="middle" fill="black">Installation issue ?</text>
+
+                    <line x1="445" y1="160" x2="445" y2="180" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="445,183 555,203 445,233 335,203" fill={"orange"} />
+                    <text x="445" y="210" textAnchor="middle" fill="black">Airbus installation ?</text>
+
+                    <line x1="445" y1="233" x2="445" y2="253" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="445,255 535,273 445,299 355,273" fill={"orange"} />
+                    <text x="445" y="279" textAnchor="middle" fill="black">Admin rights ?</text>
+
+                    <line x1="531" y1="273" x2="561" y2="273" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="651,255 741,273 651,299 561,273" fill={"orange"} />
+                    <text x="651" y="279" textAnchor="middle" fill="black">Airbus site ?</text>
+
+                    xx<line x1="651" y1="299" x2="651" y2="319" stroke="black" markerEnd="url(#arrow)" />
+
+                    xx<line x1="739" y1="273" x2="739" y2="319" stroke="black" markerEnd="url(#arrow)" />
+
+
+                    <line x1="445" y1="299" x2="445" y2="319" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="415" y="319" width="60" height="30" fill="yellow" stroke="black" />
+                    <text x="445" y="340" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 4F" }))}>Msg 4F</text>
+                    <line x1="445" y1="348" x2="445" y2="583" stroke="black" markerEnd="url(#arrow)" />
 
                     <line x1="153" y1="292" x2="153" y2="322" stroke="black" markerEnd="url(#arrow)" />
                     <polygon points="153,322 263,342 153,372 43,342" fill={"orange"} />
@@ -118,6 +139,7 @@ function DivPageGuideIncidentsRemoteControlInstallation() {
                     <text x="278" y="506" textAnchor="middle" fill="black">Wait...</text>
 
                     <line x1="153" y1="538" x2="153" y2="568" stroke="black"  markerEnd="url(#arrow)" />
+                    xx<line x1="650" y1="585" x2="195" y2="585" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="123" y="568" width="70" height="35" fill="pink" stroke="black" />
                     <text x="155" y="588" textAnchor="middle" fill="black">Resolve</text>
 
