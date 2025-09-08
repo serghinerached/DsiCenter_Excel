@@ -3,7 +3,7 @@ import {useState, useRef,useEffect} from "react";
 import { loadExcelIncidentsMessagesCotsList } from '../components/ReadExcelFileData/ExcelLoaderCotsList';
 
 
-function DivPageGuideIncidentsPullUserIssue() {
+function DivPageGuideIncidentsRemoteControlIssue() {
   const [form, setForm] = useState({ open: false, nameMessage: "" });
   const popupRef  = useRef(null);
   const [excelMessagesLoad, SetExcelMessagesLoad] = useState([]);  
@@ -164,4 +164,4 @@ function DivPageGuideIncidentsPullUserIssue() {
             
 }
 
-export default DivPageGuideIncidentsPullUserIssue;
+export default DivPageGuideIncidentsRemoteControlIssue;

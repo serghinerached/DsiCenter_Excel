@@ -3,7 +3,9 @@ import {useState, useRef,useEffect} from "react";
 import DivPageGuideIncidentsFreeInstallation from './pageGuideIncidentsFreeInstallation';
 import DivPageGuideIncidentsFreeIssue from './pageGuideIncidentsFreeIssue';
 import DivPageGuideIncidentsPullUserIssue from './pageGuideIncidentsPullUserIssue';
-
+import DivPageGuideIncidentsPullUserInstallation from './pageGuideIncidentsPullUserInstallation';
+import DivPageGuideIncidentsRemoteControlInstallation from './pageGuideIncidentsRemoteControlInstallation';
+import DivPageGuideIncidentsRemoteControlIssue from './pageGuideIncidentsRemoteControlIssue';
 
 function DivPageGuideIncidents() {
   const [draftMode, setDraftMode] = useState("");
@@ -67,6 +69,21 @@ function DivPageGuideIncidents() {
        {/* Affichage conditionnel uniquement si validé */}
       {selectedMode === "Pull User" && selectedTypeIssue === "Issue" && (
         <DivPageGuideIncidentsPullUserIssue />
+      )}
+
+      {/* Affichage conditionnel uniquement si validé */}
+      {selectedMode === "Pull User" && selectedTypeIssue === "Installation/Uninstallation" && (
+        <DivPageGuideIncidentsPullUserInstallation />
+      )}
+
+      {/* Affichage conditionnel uniquement si validé */}
+      {selectedMode === "Remote Control" && selectedTypeIssue === "Installation/Uninstallation" && (
+        <DivPageGuideIncidentsRemoteControlInstallation />
+      )}
+
+      {/* Affichage conditionnel uniquement si validé */}
+      {selectedMode === "Remote Control" && selectedTypeIssue === "Issue" && (
+        <DivPageGuideIncidentsRemoteControlIssue />
       )}
 
     </div>

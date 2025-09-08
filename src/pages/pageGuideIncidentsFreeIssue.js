@@ -60,7 +60,7 @@ function DivPageGuideIncidentsFreeIssue() {
                   
                     <line x1="153" y1="200" x2="153" y2="230" stroke="black" markerEnd="url(#arrow)" />
                     <polygon points="153,230 283,260 153,290 23,260" fill={"orange"} />
-                    <text x="153" y="265" textAnchor="middle" fill="black">Pc Services/Soft.Center ?</text>
+                    <text x="153" y="265" textAnchor="middle" fill="black">Airbus installation ?</text>
 
                     <line x1="278" y1="260" x2="328" y2="260" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="328" y="240" width="60" height="40" fill="cyan" stroke="black" />
