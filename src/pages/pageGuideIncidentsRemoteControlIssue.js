@@ -3,7 +3,7 @@ import {useState, useRef,useEffect} from "react";
 import { loadExcelIncidentsMessagesCotsList } from '../components/ReadExcelFileData/ExcelLoaderCotsList';
 
 
-function DivPageGuideIncidentsRemoteControlIssue() {
+function DivPageGuideIncidentsRemoteControlInstallation() {
   const [form, setForm] = useState({ open: false, nameMessage: "" });
   const popupRef  = useRef(null);
   const [excelMessagesLoad, SetExcelMessagesLoad] = useState([]);  
@@ -54,74 +54,69 @@ function DivPageGuideIncidentsRemoteControlIssue() {
                     <rect x="285" y="55" width="60" height="40" fill="cyan" stroke="black" />
                     <text x="315" y="80" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 3A" }))} >Msg 3A</text>
 
-                    <rect x="123" y="160" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="153" y="185" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 3B" }))}>Msg 3B</text>
-                    <line x1="285" y1="95" x2="183" y2="160" stroke="black" markerEnd="url(#arrow)" />
-                  
-                    <line x1="153" y1="200" x2="153" y2="230" stroke="black" markerEnd="url(#arrow)" />
-                    <polygon points="153,230 223,260 153,290 83,260" fill={"orange"} />
-                    <text x="153" y="265" textAnchor="middle" fill="black">Net user ?</text>
+                    <polygon points="153,160 223,180 153,200 83,180" fill={"orange"} />
+                    <text x="153" y="185" textAnchor="middle" fill="black">Request ?</text>
 
-                    <line x1="221" y1="260" x2="261" y2="260" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="265" y="240" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="295" y="265" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2C" }))}>Msg 2C</text>
-                    <line x1="325" y1="260" x2="365" y2="260" stroke="black" markerEnd="url(#arrow)" />
-
-                    <polygon points="475,230 585,260 475,290 365,260" fill={"orange"} />
-                    <text x="478" y="265" textAnchor="middle" fill="black">Airbus installation ?</text>
-                    <line x1="475" y1="230" x2="157" y2="229" stroke="black" markerEnd="url(#arrow)" />
-
-                    <line x1="583" y1="260" x2="583" y2="200" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="550" y="160" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="580" y="185" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2D" }))}>Msg 2D</text>
-                    <line x1="550" y1="180" x2="155" y2="220" stroke="black" markerEnd="url(#arrow)" />
-
-
-                    <line x1="153" y1="290" x2="153" y2="310" stroke="black" markerEnd="url(#arrow)" />
-                    <polygon points="153,310 223,330 153,360 83,330" fill={"orange"} />
-                    <text x="153" y="337" textAnchor="middle" fill="black">Request ?</text>
-
-                    <line x1="221" y1="330" x2="261" y2="266" stroke="black" markerEnd="url(#arrow)" />
-
-                    <line x1="153" y1="360" x2="153" y2="380" stroke="black"  markerEnd="url(#arrow)" />
-                    <polygon points="153,380 283,410 153,430 23,410" fill={"orange"} />
-                    <text x="153" y="413" textAnchor="middle" fill="black">Need Admin rights ?</text>
-
-                    <line x1="28" y1="410" x2="10" y2="410" stroke="black"  />
-                    <line x1="10" y1="410" x2="10" y2="630" stroke="black"  />
-                    <line x1="10" y1="630" x2="122" y2="630" stroke="black"  markerEnd="url(#arrow)" />
-
-                    <line x1="153" y1="430" x2="153" y2="450" stroke="black"  markerEnd="url(#arrow)" />
-                    <rect x="123" y="452" width="60" height="40" fill="cyan" stroke="black" />
-                   <text x="153" y="475" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 1C" }))}>Msg 1C</text>
+                    <line x1="221" y1="180" x2="241" y2="180" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="245" y="160" width="60" height="40" fill="cyan" stroke="black" />
+                    <text x="275" y="185" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2C" }))}>Msg 2C</text>
                     
-                    <line x1="153" y1="493" x2="153" y2="513" stroke="black"  markerEnd="url(#arrow)" />
-                    <polygon points="153,513 283,533 153,563 23,533" fill={"orange"} />
-                    <text x="153" y="540" textAnchor="middle" fill="black">Admin rights ?</text>
+                    <line x1="153" y1="200" x2="153" y2="220" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="125" y="220" width="60" height="40" fill="cyan" stroke="black" />
+                    <text x="155" y="245" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 3B" }))}>Msg 3B</text>
+                    
+                    <line x1="305" y1="180" x2="345" y2="180" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="455,150 565,180 455,210 345,180" fill={"orange"} />
+                    <text x="458" y="185" textAnchor="middle" fill="black">Airbus installation ?</text>
+                    <line x1="455" y1="210" x2="185" y2="245" stroke="black" markerEnd="url(#arrow)" />
 
-                    <line x1="153" y1="563" x2="153" y2="610" stroke="black"  markerEnd="url(#arrow)" />
-                    <rect x="123" y="610" width="70" height="35" fill="pink" stroke="black" />
-                    <text x="155" y="632" textAnchor="middle" fill="black">Resolve</text>
+                    <line x1="563" y1="180" x2="563" y2="140" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="535" y="100" width="60" height="40" fill="cyan" stroke="black" />
+                    <text x="565" y="125" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2D" }))}>Msg 2D</text>
+                    <line x1="535" y1="120" x2="160" y2="150" stroke="black" markerEnd="url(#arrow)" />
 
-                    <line x1="279" y1="533" x2="317" y2="482" stroke="black"  markerEnd="url(#arrow)" />
-                    <polygon points="396,450 476,480 396,520 315,480" fill={"orange"} />
-                    <text x="396" y="485" textAnchor="middle" fill="black">Airbus Site ?</text>
 
-                    <line x1="396" y1="520" x2="396" y2="550" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="355" y="550" width="77" height="50" fill="cyan" stroke="black" />
-                    <text x="395" y="570" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 1D" }))}>
-                      Msg 1D<tspan x="395" dy="1em">(Techbar)</tspan>
+                    <line x1="153" y1="260" x2="153" y2="280" stroke="black"  markerEnd="url(#arrow)" />
+                    <polygon points="153,280 283,305 153,325 23,305" fill={"orange"} />
+                    <text x="153" y="308" textAnchor="middle" fill="black">Need Admin rights ?</text>
+
+                    <line x1="26" y1="305" x2="15" y2="305" stroke="black"  />
+                    <line x1="15" y1="305" x2="15" y2="536" stroke="black"  />
+                    <line x1="15" y1="536" x2="122" y2="536" stroke="black"  markerEnd="url(#arrow)" />
+
+                    <line x1="153" y1="325" x2="153" y2="383" stroke="black"  markerEnd="url(#arrow)" />
+
+                    <rect x="123" y="385" width="60" height="40" fill="cyan" stroke="black" />
+                    <text x="153" y="410" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 1C" }))}>Msg 1C</text>
+                    <line x1="153" y1="426" x2="153" y2="450" stroke="black"  markerEnd="url(#arrow)" />
+
+                    <polygon points="153,450 283,470 153,495 23,470" fill={"orange"} />
+                    <text x="153" y="475" textAnchor="middle" fill="black">Admin rights ?</text>
+
+                    <line x1="153" y1="495" x2="153" y2="515" stroke="black"  markerEnd="url(#arrow)" />
+                    <rect x="123" y="516" width="70" height="35" fill="pink" stroke="black" />
+                    <text x="155" y="536" textAnchor="middle" fill="black">Resolve</text>
+
+                    <line x1="279" y1="470" x2="317" y2="470" stroke="black"  markerEnd="url(#arrow)" />
+                    <polygon points="396,440 476,470 396,510 315,470" fill={"orange"} />
+                    <text x="396" y="475" textAnchor="middle" fill="black">Airbus Site ?</text>
+
+                    <line x1="396" y1="510" x2="396" y2="540" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="355" y="540" width="77" height="50" fill="cyan" stroke="black" />
+                    <text x="395" y="560" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 5A" }))}>
+                      Msg 5A<tspan x="395" dy="1em">(Techbar)</tspan>
                     </text>
-                    <line x1="396" y1="600" x2="396" y2="630" stroke="black"  />
+                    <line x1="396" y1="590" x2="396" y2="618" stroke="black" markerEnd="url(#arrow)" />
 
-                    <line x1="474" y1="480" x2="475" y2="550" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="450" y="550" width="77" height="50" fill="cyan" stroke="black" />
-                    <text x="490" y="570" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 1E" }))}>
-                      Msg 1E<tspan x="490" dy="1em">(Remote)</tspan>
+                    <line x1="474" y1="470" x2="475" y2="550" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="450" y="540" width="77" height="50" fill="cyan" stroke="black" />
+                    <text x="490" y="560" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 5B" }))}>
+                      Msg 5B<tspan x="490" dy="1em">(Remote)</tspan>
                     </text>
-                    <line x1="474" y1="600" x2="474" y2="630" stroke="black"  />
+                    <line x1="474" y1="590" x2="474" y2="618" stroke="black" markerEnd="url(#arrow)" />
 
-                    <line x1="474" y1="630" x2="196" y2="630" stroke="black"  markerEnd="url(#arrow)" />
+                    <line x1="474" y1="620" x2="160" y2="620" stroke="black"  />
+                    <line x1="160" y1="620" x2="160" y2="553" stroke="black"  markerEnd="url(#arrow)" />
 
 
                     <defs>
@@ -164,4 +159,4 @@ function DivPageGuideIncidentsRemoteControlIssue() {
             
 }
 
-export default DivPageGuideIncidentsRemoteControlIssue;
+export default DivPageGuideIncidentsRemoteControlInstallation;

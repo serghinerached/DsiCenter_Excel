@@ -45,7 +45,7 @@ function DivPageGuideIncidentsRemoteControlInstallation() {
               <tr>
                 <td style={{border:"1px solid black",textAlign:"left"}}>
 
-                  <svg width="750" height="650" >
+                  <svg width="760" height="650" >
 
                     {/* gestion des fleches */}
                     <defs>
@@ -100,31 +100,42 @@ function DivPageGuideIncidentsRemoteControlInstallation() {
                     <polygon points="445,183 555,203 445,233 335,203" fill={"orange"} />
                     <text x="445" y="210" textAnchor="middle" fill="black">Airbus installation ?</text>
 
-                    <line x1="445" y1="233" x2="445" y2="253" stroke="black" markerEnd="url(#arrow)" />
-                    <polygon points="445,255 535,273 445,299 355,273" fill={"orange"} />
-                    <text x="445" y="279" textAnchor="middle" fill="black">Admin rights ?</text>
+                    x<line x1="445" y1="233" x2="445" y2="253" stroke="black" markerEnd="url(#arrow)" />
+                    xx<rect x="415" y="255" width="60" height="40" fill="cyan" stroke="black" />
+                    xx<text x="445" y="279" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 1C" }))}>Msg 1C</text>
+                   
+                    x<line x1="445" y1="295" x2="445" y2="315" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="445,315 535,333 445,359 355,333" fill={"orange"} />
+                    <text x="445" y="340" textAnchor="middle" fill="black">Admin rights ?</text>
 
-                    <line x1="531" y1="273" x2="561" y2="273" stroke="black" markerEnd="url(#arrow)" />
-                    <polygon points="651,255 741,273 651,299 561,273" fill={"orange"} />
-                    <text x="651" y="279" textAnchor="middle" fill="black">Airbus site ?</text>
+                    <line x1="475" y1="273" x2="541" y2="273" stroke="black" markerEnd="url(#arrow)" />
+                    <polygon points="631,255 721,273 631,299 541,273" fill={"orange"} />
+                    <text x="631" y="279" textAnchor="middle" fill="black">Airbus site ?</text>
 
-                    xx<line x1="651" y1="299" x2="651" y2="319" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="631" y1="299" x2="631" y2="319" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="580" y="320" width="70" height="50" fill="cyan" stroke="black" />
+                    <text x="615" y="343" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 4D" }))}>
+                      Msg 4D<tspan x="615" dy="1em">(Techbar)</tspan></text>
+                    <line x1="717" y1="273" x2="717" y2="319" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="670" y="320" width="70" height="50" fill="cyan" stroke="black" />
+                    <text x="705" y="343" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 4E" }))}>
+                      Msg 4E<tspan x="705" dy="1em">(Techbar)</tspan></text>
+                    
+                    <line x1="620" y1="370" x2="620" y2="582" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="710" y1="370" x2="710" y2="582" stroke="black" markerEnd="url(#arrow)" />
 
-                    xx<line x1="739" y1="273" x2="739" y2="319" stroke="black" markerEnd="url(#arrow)" />
-
-
-                    <line x1="445" y1="299" x2="445" y2="319" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="415" y="319" width="60" height="30" fill="yellow" stroke="black" />
-                    <text x="445" y="340" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 4F" }))}>Msg 4F</text>
-                    <line x1="445" y1="348" x2="445" y2="583" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="445" y1="359" x2="445" y2="379" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="415" y="379" width="60" height="30" fill="yellow" stroke="black" />
+                    <text x="445" y="400" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 4F" }))}>Msg 4F</text>
+                    <line x1="445" y1="408" x2="445" y2="583" stroke="black" markerEnd="url(#arrow)" />
 
                     <line x1="153" y1="292" x2="153" y2="322" stroke="black" markerEnd="url(#arrow)" />
                     <polygon points="153,322 263,342 153,372 43,342" fill={"orange"} />
                     <text x="153" y="349" textAnchor="middle" fill="black">Request approved ?</text>
 
-                    <line x1="261" y1="342" x2="293" y2="342" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="293" y="325" width="60" height="40" fill="red" stroke="black" />
-                    <text x="323" y="350" textAnchor="middle" fill="white" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 4B" }))}>Msg 4B</text>
+                    <line x1="261" y1="342" x2="281" y2="342" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="283" y="325" width="60" height="30" fill="red" stroke="black" />
+                    <text x="313" y="345" textAnchor="middle" fill="white" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 4B" }))}>Msg 4B</text>
                     
                     <line x1="153" y1="372" x2="153" y2="402" stroke="black"  markerEnd="url(#arrow)" />
                     <rect x="125" y="402" width="60" height="40" fill="cyan" stroke="black" />
@@ -139,7 +150,7 @@ function DivPageGuideIncidentsRemoteControlInstallation() {
                     <text x="278" y="506" textAnchor="middle" fill="black">Wait...</text>
 
                     <line x1="153" y1="538" x2="153" y2="568" stroke="black"  markerEnd="url(#arrow)" />
-                    xx<line x1="650" y1="585" x2="195" y2="585" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="712" y1="585" x2="195" y2="585" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="123" y="568" width="70" height="35" fill="pink" stroke="black" />
                     <text x="155" y="588" textAnchor="middle" fill="black">Resolve</text>
 

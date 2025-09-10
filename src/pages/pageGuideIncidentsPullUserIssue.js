@@ -69,7 +69,7 @@ function DivPageGuideIncidentsPullUserIssue() {
 
                     <polygon points="475,230 585,260 475,290 365,260" fill={"orange"} />
                     <text x="478" y="265" textAnchor="middle" fill="black">Airbus installation ?</text>
-                    <line x1="475" y1="230" x2="157" y2="229" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="475" y1="290" x2="158" y2="378" stroke="black" markerEnd="url(#arrow)" />
 
                     <line x1="583" y1="260" x2="583" y2="200" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="550" y="160" width="60" height="40" fill="cyan" stroke="black" />

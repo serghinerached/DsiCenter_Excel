@@ -18,17 +18,19 @@ export const SidebarData = [
   
     subNav: [
       {
-        title: "Weekly - Wo",
+        title: "Requests",
         path: "/tasks/requests",
         icon: <FaIcons.FaCalculator />,
         cName: "sub-nav",
       },
+      /*
       {
         title: "Monthly - Wo - FOR TEST",
         path: "/tasks/incidents",
         icon: <FaIcons.FaCalculator />,
         cName: "sub-nav",
       },
+      */
       {
         title: "Incidents",
         path: "/Reporting/Monthly_Incidents",
