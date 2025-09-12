@@ -1,13 +1,12 @@
 import {styles} from '../components/ComponentCss';
-import React, {useState,useRef,useEffect} from "react";
-import FileInput from "../components/ReadExcelFileData/FileInput";
-import readExcel from "../components/ReadExcelFileData/readExcel";
+import {useState,useRef,useEffect} from "react";
 import { loadExcelData } from '../components/ReadExcelFileData/ExcelLoader';
 
 function DivPageTraker() {
 
   // DECLARATIONS
   const [excelDataLoad, SetExcelDataLoad] = useState([]);
+  const [dateLastImport, SetDateLastImport] = useState();
   const hiddenFileInput = useRef(null);
 
   // CONVERT NUMBER TO DATE STRING
@@ -20,8 +19,9 @@ function DivPageTraker() {
   const convertColTabNumberToString = (copyData) => {
     // Transformation des dates dans les colonnes 1, 10 et 11
     for (let a = 0; a < Object.keys(copyData[0]).length; a++) {
+      copyData[a].splice(13, 1); // supp col 13
       const currentKey = Object.keys(copyData[0])[a];
-      if (a === 1 || a === 10 || a === 11) {
+      if (a === 1 || a === 9 || a === 10) {
           for (let b = 1; b < copyData.length; b++) {
               const cell = copyData[b][currentKey];
               if (typeof cell === "number") {
@@ -38,11 +38,13 @@ function DivPageTraker() {
     useEffect(() => {
       const fetchData = async () => {
         var copyData = [...await loadExcelData()];
+        SetDateLastImport(convertNumberToDateString(copyData[1][13]));
         copyData = convertColTabNumberToString(copyData);
         SetExcelDataLoad(copyData);
       }
         fetchData();
     }, [])
+
     
 
    // BOUTON IMPORT
@@ -67,9 +69,9 @@ function DivPageTraker() {
               Import  
             </button>
            
-            <p style={styles.p2}> Last import : 19/09/2022</p>
+            <p style={styles.p2}> Last import : {dateLastImport}</p>
 
-            <h2 style={styles.title}>TRAKER</h2>
+            <h2 style={styles.title}>TRACKER</h2>
             <br/>
             <br/>
 
@@ -85,31 +87,9 @@ function DivPageTraker() {
 
                         (rowIndex > 0) // row > 0
                         ?
-                        (<td style={styles.tdIncidents} key={cellIndex}>{cell}</td>) 
-
-                        /*
-                        (
-                          (cellIndex === 0 || cellIndex === 2 || cellIndex === 3 || cellIndex === 5 || cellIndex === 7 || cellIndex === 11) // NON DATE
-                          ? 
-                          (
-                            (<td style={styles.tdIncidents} key={cellIndex}>{cell}</td>) 
-                          ) 
-                          : 
-                          (cellIndex === 1 || cellIndex === 9 || cellIndex === 10) // DATES
-                          ? 
-                          ( 
-                             //(<td style={styles.tdIncidents} key={cellIndex}>{convDate(cell)}</td>) 
-                            (<td style={styles.tdIncidents} key={cellIndex}>{cell}</td>) 
-
-                          ) 
-                          :
-                          null
-                        ) 
-                        */
+                          (<td style={{textAlign:"center",...styles.tdIncidents}} key={cellIndex}>{cell}</td>)
                         : // row = 0 (entete)
-                    
-                        (<th style={{textAlign:"center",border:"1px solid black",backgroundColor:"cyan",padding:5}} key={cellIndex}>{cell}</th>) 
-                        
+                          (<th style={{textAlign:"center",border:"1px solid black",backgroundColor:"cyan",padding:5}} key={cellIndex}>{cell}</th>) 
                       ))}
                       
                   </tr>

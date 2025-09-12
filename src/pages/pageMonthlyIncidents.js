@@ -48,8 +48,9 @@ const DivPageMonthlyIncidents = () => {
     const parseColNumberToDateString = (copyData) => {
       // Transformation des dates dans les colonnes 1, 10 et 11
       for (let a = 0; a < Object.keys(copyData[0]).length; a++) {
+        copyData[a].splice(13, 1); // supp col 13
         const currentKey = Object.keys(copyData[0])[a];
-        if (a === 1 || a === 10 || a === 11) {
+        if (a === 1 || a === 9 || a === 10) {
           for (let b = 1; b < copyData.length; b++) {
               const cell = copyData[b][currentKey];
               if (typeof cell === "number") {
