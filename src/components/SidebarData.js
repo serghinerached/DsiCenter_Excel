@@ -11,39 +11,8 @@ export const SidebarData = [
   },
   {
     title: "Reporting",
-    path: "/tasks",
-    icon: <FaIcons.FaCalculator />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-  
-    subNav: [
-      {
-        title: "Requests",
-        path: "/tasks/requests",
-        icon: <FaIcons.FaCalculator />,
-        cName: "sub-nav",
-      },
-      /*
-      {
-        title: "Monthly - Wo - FOR TEST",
-        path: "/tasks/incidents",
-        icon: <FaIcons.FaCalculator />,
-        cName: "sub-nav",
-      },
-      */
-      {
-        title: "Incidents",
-        path: "/Reporting/Monthly_Incidents",
-        icon: <FaIcons.FaCalculator />,
-        cName: "sub-nav",
-      },
-      {
-        title: "Monthly - Wo Scade",
-        path: "/Reporting/Monthly_WoScade",
-        icon: <FaIcons.FaCalculator />,
-        cName: "sub-nav",
-      },
-    ],
+    path: "/reporting",
+    icon: <AiIcons.AiFillHome />,  
   },
   {
     title: "Planning",
