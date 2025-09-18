@@ -1,18 +1,18 @@
 import React from "react";
-import TrackerService from "../services/TrackerService";
 import {styles} from './ComponentCss';
-import ExcelLoader from '../components/ReadExcelFileData/ExcelLoader';
-import DivPageTraker from "../pages/pageTraker";
+//import DivPageTracker_Excel from "../pages/pageTracker_Excel";
+import DivPageTracker_Supabase from "../pages/pageTracker_Supabase"
 
-class TrackerComponent extends React.Component {
+class TrackerExcelComponent extends React.Component {
 
     render () {
           return(
             <div style={styles.div2}>
-                <DivPageTraker/>
+                {/* <DivPageTracker_Excel/> */}
+                <DivPageTracker_Supabase/> 
             </div>
         )
     }
 }
 
-export default TrackerComponent
+export default TrackerExcelComponent

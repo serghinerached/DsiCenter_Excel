@@ -3,7 +3,7 @@ import { loadExcelData } from '../components/ReadExcelFileData/ExcelLoader';
 import {styles} from '../components/ComponentCss';
 
 
-const DivPageMonthlyIncidents = () => {
+const DivPageTracker_Excel = () => {
  
     const [originalData, setOriginalData] = useState([]);
     const [excelData, setExcelData] = useState([]);
@@ -15,7 +15,6 @@ const DivPageMonthlyIncidents = () => {
     const [dateLastImport, SetDateLastImport] = useState();
     const hiddenFileInput = useRef(null);
  
-    
     // Get Date Today
     useEffect(() => {
         const fToday = () => {
@@ -39,6 +38,7 @@ const DivPageMonthlyIncidents = () => {
             }
         };
         fetchData();
+        
     }, []);
  
    
@@ -50,11 +50,11 @@ const DivPageMonthlyIncidents = () => {
 
     // CONVERSION COLUMN NUMBER TO COLUMN DATE STRING
     const parseColNumberToDateString = (copyData) => {
-      // Transformation des dates dans les colonnes 1, 9 et 10
+      // Transformation des dates dans les colonnes 1, 11 et 12
       for (let a = 0; a < Object.keys(copyData[0]).length; a++) {
-        copyData[a].splice(13, 1); // supp col 13
+        copyData[a].splice(14, 1); // supp col 14
         const currentKey = Object.keys(copyData[0])[a];
-        if (a === 1 || a === 9 || a === 10) {
+        if (a === 2 || a === 10 || a === 11) {
           for (let b = 1; b < copyData.length; b++) {
               const cell = copyData[b][currentKey];
               if (typeof cell === "number") {
@@ -72,22 +72,23 @@ const DivPageMonthlyIncidents = () => {
 
         if(annee === "" && mois === "" && week === "" && type === "") {
           return data.filter(row =>
-            row[0] === "Week" 
+            row[1] === "Week" 
           );
         } else {
             if(annee != "" && mois === "" && week === ""  && type === "") {
               return data.filter(row =>
-                row[0] === "Week" || row[1].includes(year)
+                row[1] === "Week" || row[2].includes(year)
               );
             } else {
                 if(annee != "" && mois != "" && week === ""  && type === "") {
+                  console.log(data )
                   return data.filter(row =>
-                    row[0] === "Week" || row[1].includes(yearMonthSearch)
+                    row[1] === "Week" || row[2].includes(yearMonthSearch)
                   );
                 } else {
                   if(annee != "" && mois === 0 && week != ""  && type === "") {
                     return data.filter(row =>
-                      row[1].includes(year) && row[0] === parseInt(week)
+                      row[2].includes(year) && row[0] === parseInt(week)
                     );
                   } else { // test an = "" et week != ""
                     if(annee === "" && week != "") {
@@ -161,7 +162,6 @@ const DivPageMonthlyIncidents = () => {
     const handleChange = (event) => {
       const file = event.target.files[0];
       console.log('Fichier sélectionné :', file);
-      // Vous pouvez lire le fichier ici avec FileReader ou l'envoyer au serveur
     };
 
     // CONVERT NUMBER TO DATE STRING
@@ -257,4 +257,4 @@ const DivPageMonthlyIncidents = () => {
  
 };
  
-export default DivPageMonthlyIncidents;
+export default DivPageTracker_Excel;

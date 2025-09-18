@@ -58,7 +58,7 @@ export const styles = {
 
   },
   title:{
-    marginLeft:'250px',
+    marginLeft:'120px',
     display: 'inline-block',
     fontweight:'bold',
   },
