@@ -1,5 +1,4 @@
 import React, {useRef,useState, useEffect} from "react";
-//import { loadExcelData } from '../components/ReadExcelFileData/ExcelLoader';
 import {styles} from '../components/ComponentCss';
 import { supabase } from '../components/ReadSupabase/supabaseClient';
 
@@ -7,7 +6,7 @@ import { supabase } from '../components/ReadSupabase/supabaseClient';
 const DivPageTracker_Supabase = () => {
  
     const [originalData, setOriginalData] = useState([]);
-    const [excelData, setExcelData] = useState([]);
+    const [supabaseTrackerData, setSupabaseTracker] = useState([]);
     const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1).toString().padStart(2, '0'));
     const [selectedWeek, setSelectedWeek] = useState("");
@@ -15,6 +14,7 @@ const DivPageTracker_Supabase = () => {
     const [needUpdate, setNeedUpdate] = useState(true);
     const [dateLastImport, SetDateLastImport] = useState();
     const hiddenFileInput = useRef(null);
+
  
     // Get Date Today
     useEffect(() => {
@@ -27,19 +27,6 @@ const DivPageTracker_Supabase = () => {
         setSelectedYear(YearToday);
         const monthToday = today.split("/")[1];
         setSelectedMonth(monthToday);
- /*
-        const fetchData = async () => {
-            const dataExcel = await loadExcelData();
-            if (dataExcel && dataExcel.length > 0) {
-                var copyData = [...dataExcel];
-                SetDateLastImport(convertNumberToDateString(copyData[1][13]));
-                copyData = parseColNumberToDateString(copyData);
-                setOriginalData(copyData); // données prêtes à être filtrées
-                setNeedUpdate(true); // déclenche le filtrage
-            }
-        };
-        fetchData();
-        */
        
         // LOAD TABLE Tracker FROM SUPABASE
         const fetchData = async () => {
@@ -50,51 +37,16 @@ const DivPageTracker_Supabase = () => {
             console.error("Erreur :", error);
           } else {
             if (dataTableTracker && dataTableTracker.length > 0) {
-              var copyData = [...dataTableTracker];              
-              SetDateLastImport(convertNumberToDateString(copyData[1][14]));
-              copyData = parseColNumberToDateString(copyData);
-              setOriginalData(copyData); // données prêtes à être filtrées
+              SetDateLastImport((dataTableTracker[1]["Last import"]).split(" ")[0]);
+              setOriginalData(dataTableTracker); // données prêtes à être filtrées
               setNeedUpdate(true); // déclenche le filtrage
             }
-          //  setRows(data);
           }
         };
         fetchData();
 
     }, []);
  
-   
-    // CONVERSION NUMBER TO DATE STRING
-    const parseExcelDateString = (excelDateNumber) => {
-        console.log("excelDateNumber : " + excelDateNumber + " , " + typeof(excelDateNumber));
-        const baseDate = new Date(1900, 0, 1);
-        var newDate = (new Date(baseDate.getTime() + (excelDateNumber - 2) * 86400000)).toLocaleDateString()
-        console.log("newDate : " + newDate);
-        return newDate;
-    }
-    
-
-    // CONVERSION COLUMN NUMBER TO COLUMN DATE STRING
-    const parseColNumberToDateString = (copyData) => {
-      // Transformation des dates dans les colonnes 1, 11 et 12
-      for (let a = 0; a < Object.keys(copyData[0]).length; a++) {
-        delete copyData[a]["Last import"];
-        const currentKey = Object.keys(copyData[0])[a];
-        if (a === 2 || a === 10 || a === 11) {
-          console.log("MODIF DATE BEGIN ***********");
-          for (let b = 1; b < copyData.length; b++) {
-              const cell = copyData[b][currentKey];
-            //  console.log(cell + " = "  + typeof(cell))
-            //  if (typeof cell === "number") {
-            //    console("number")
-                copyData[b][currentKey] = parseExcelDateString(cell);
-            //  }
-          }
-          console.log("MODIF DATE END ***********");
-        }
-      }
-      return copyData;
-    }
  
     const filterByYearMonthOrWeek = (data, mois, annee,week,type) => {
         const year = `/${annee}`
@@ -111,7 +63,6 @@ const DivPageTracker_Supabase = () => {
               );
             } else {
                 if(annee != "" && mois != "" && week === ""  && type === "") {
-                  console.log("DEMARRAGE : "  + data[0].Opened );
                   return data.filter(row =>
                   //  row[1] === "Week" || row[2].includes(yearMonthSearch)
                     row.Week === "Week" || row.Opened.includes(yearMonthSearch)
@@ -143,12 +94,11 @@ const DivPageTracker_Supabase = () => {
  
     useEffect(() => {
         if (needUpdate && originalData.length > 0) {
-            //console.log("originalData : " + originalData)
-            const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek,selectedType);
-            console.log("filteredData : " + filteredData.length)
-            setExcelData(filteredData);
+            const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek,selectedType);            
+            setSupabaseTracker(filteredData); //filteredData);
             setNeedUpdate(false);
         }
+
     }, [needUpdate, selectedMonth, selectedYear, originalData]);
  
 
@@ -200,17 +150,53 @@ const DivPageTracker_Supabase = () => {
     };
 
     // CONVERT NUMBER TO DATE STRING
-  const convertNumberToDateString = (excelDateNumber) => {
+  const convertNumberToDateString = (supabaseTrackerDateNumber) => {
     const baseDate = new Date(1900, 0, 1);
-    return (new Date(baseDate.getTime() + (excelDateNumber - 2) * 86400000)).toLocaleDateString();
+    return (new Date(baseDate.getTime() + (supabaseTrackerDateNumber - 2) * 86400000)).toLocaleDateString();
   }
 
- 
+  var columns = supabaseTrackerData[0] // recup colonnes et on enlève la dernière 
+  ? Object.keys(supabaseTrackerData[0]) 
+  : [];
+  columns = columns.slice(0, -1); // enlève la dernière colonne
+
+  //bouton import
+  const fileInputRef = useRef(null);
+
+  const handleClick2 = () => {
+    fileInputRef.current.click(); // déclenche l'ouverture du sélecteur de fichier
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log("Fichier sélectionné :", file.name);
+    }
+  };
+
   return (
     <div style={styles.divImport} >
 
+      <div>
+      {/* Bouton personnalisé */}
+      <button
+        onClick={handleClick}
+        className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+      >
+        Importer un fichier
+      </button>
+
+      {/* Input caché */}
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
+    </div>
+
        <input type="file" ref={hiddenFileInput} onClick={handleChange} style={{ display: 'none' }}  /> <br/>  
-      <button style={styles.btnImport} onClick={handleClick}>
+      <button style={styles.btnImport} onClick={handleClick2}>
         Import  
       </button>
       
@@ -261,30 +247,38 @@ const DivPageTracker_Supabase = () => {
         <br/>
  
         <table style={styles.tableIncidents}>
-                         
-          <tbody>
-            {excelData && excelData.length > 0 && excelData.map((row, rowIndex) => {
-              // Affiche toujours l'en-tête (ligne 0)
-              if (rowIndex === 0) {
-                return (
-                  <tr key={rowIndex}>
-                    {row.map((cell, cellIndex) => (
-                      <th style={{textAlign: "center",border: "1px solid black",backgroundColor: "lightgreen",padding: 5,}} key={cellIndex} >{cell}</th>
-                    ))}
-                  </tr>
-                );
-              }
-           
-              return (
-                <tr key={rowIndex}>
-                  {row.map((cell, cellIndex) => (
-                    <td style={{ border: "1px solid black", padding: 5 }} key={cellIndex}>{cell}</td>
-                  ))}
-                </tr>
-              );
-            })}
-             
-          </tbody>
+           <thead>
+            <tr>
+              {columns.map((col) => (
+                <th style={{backgroundColor: "lightgreen", border: "1px solid black", padding: 5, textAlign:"center" }} key={col}>
+                  {col}
+                  </th>
+              )) }
+            </tr>
+          </thead>
+           {supabaseTrackerData.map((row) => (
+              <tr style={{fontSize:"12px" }}> 
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Id}</td>
+                <td style={{ border: "1px solid black", padding: 5 ,textAlign:"center"}} >{row.Week}</td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Opened.split(" ")[0]}</td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Number}</td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Type}</td>
+                <td style={{ border: "1px solid black", padding: 5 }} >{row.Cots}</td>
+                <td style={{ border: "1px solid black", padding: 5 }} >{row.Service}</td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Status}</td>
+                <td style={{ border: "1px solid black", padding: 5,}} >{row["Assigned to"]}</td>
+                <td style={{ border: "1px solid black", padding: 5 }} >{row["Requested for"]}</td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >
+                  {row.Resolved ? row.Resolved.split(" ")[0] : ""}
+                </td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >
+                  {row.Closed ? row.Closed.split(" ")[0] : ""}
+                </td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Priority}</td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Reopen}</td>
+              </tr>
+           ))}
+       
         </table>
  
       </div>
