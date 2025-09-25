@@ -56,6 +56,8 @@ const DivPageTracker_Supabase = () => {
 
         if (allData.length > 0) {
           SetDateLastImport((allData[1]["Last import"]).split(" ")[0]);
+          console.log("dataTableTracker :", allData.length);
+
           setOriginalData(allData);
           setNeedUpdate(true);
         }
@@ -68,8 +70,7 @@ const DivPageTracker_Supabase = () => {
  
     const filterByYearMonthOrWeek = (data, mois, annee,week,type) => {
         const year = `/${annee}`
-        const yearMonthSearch = `${annee}-${mois}-`; //`/${mois}/${annee}`;
-        console.log("yearMonthSearch=",yearMonthSearch)
+        const yearMonthSearch = `/${mois}/${annee}`;
 
         if(annee === "" && mois === "" && week === "" && type === "") {
           return data.filter(row =>
@@ -117,6 +118,7 @@ const DivPageTracker_Supabase = () => {
             setSupabaseTracker(filteredData); 
             setNeedUpdate(false);
             console.log("originalData : " + originalData.length);
+            console.log("filteredData : " + filteredData.length);
             console.log("supabaseTrackerData : " + supabaseTrackerData.length);
 
         }
