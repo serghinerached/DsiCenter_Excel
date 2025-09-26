@@ -16,7 +16,6 @@ const DivPageTracker_Supabase = () => {
   const [dateLastImport, SetDateLastImport] = useState();
   const hiddenFileInput = useRef(null);
   const [dataCsvIncident, setDataCsvIncident] = useState([]);
-  const [newTrackerIncident,setNewTrackerIncident] = useState([])
 
 
   //------------------------------------------
@@ -70,7 +69,7 @@ const DivPageTracker_Supabase = () => {
  
   const filterByYearMonthOrWeek = (data, mois, annee,week,type) => {
       const year = `/${annee}`
-      const yearMonthSearch = `${annee}-${mois}-`; //`/${mois}/${annee}`;
+      const yearMonthSearch = `/${mois}/${annee}`; // `${annee}-${mois}-`;
       console.log("yearMonthSearch=",yearMonthSearch)
 
       if(annee === "" && mois === "" && week === "" && type === "") {
@@ -172,7 +171,6 @@ const DivPageTracker_Supabase = () => {
   // BOUTON FILE HIDDEN
   const handleChangeFile = (event) => {
     const file = event.target.files[0];
-    console.log('Fichier sélectionné :', file);
     // Vous pouvez lire le fichier ici avec FileReader ou l'envoyer au serveur
   };
 
@@ -197,7 +195,6 @@ const DivPageTracker_Supabase = () => {
         header: true, // si tu veux utiliser la première ligne comme entête
         skipEmptyLines: true,
         complete: (results) => {
-          console.log(results.data.length)
           setDataCsvIncident(results.data);
         },
       });
@@ -212,9 +209,7 @@ const DivPageTracker_Supabase = () => {
       return;
     } 
 
-    console.log(dataCsvIncident[0]);    
-
-    transformTabNewCsv(dataCsvIncident);
+    startUpdateTableTracker(dataCsvIncident);
 
   };
 
@@ -235,7 +230,7 @@ const DivPageTracker_Supabase = () => {
 //---------------------------  
 
   // Fonction principale pour transformer et insérer les données
-  function transformTabNewCsv(tabNewIncCsv) {
+  function startUpdateTableTracker(tabNewIncCsv) {
     
     const columnsToRemove = [
       "Short description",
@@ -245,6 +240,11 @@ const DivPageTracker_Supabase = () => {
       "Base item"
     ]
 
+    const columnsToRename = {
+      "Service": "Application",
+      "Reopen count": "Reopen"
+    }
+
     function transformData(tabNewIncCsv) {
       return tabNewIncCsv.map(row => {
         // Créer une copie sans les colonnes à supprimer
@@ -252,24 +252,26 @@ const DivPageTracker_Supabase = () => {
           Object.entries(row).filter(([key]) => !columnsToRemove.includes(key))
         )
 
+        // Appliquer les renommages
+        for (const [oldKey, newKey] of Object.entries(columnsToRename)) {
+          if (oldKey in newRow) {
+            newRow[newKey] = newRow[oldKey]
+            delete newRow[oldKey]
+          }
+        }
+
+        // 3️⃣ Calculer le numéro de semaine à partir de "Opened"
+        newRow["Week"] = newRow["Opened"] ? getWeekNumber(newRow["Opened"]) : "";
+
         // Ajouter les nouvelles colonnes
         newRow["Type"] = "Incident"
-        newRow["Cots"] = ""
 
         return newRow
       })
-    }
+    } // end transformData
 
       // Fonction pour insérer ou mettre à jour dans Supabase
     async function syncIncidents(tabNewIncCsv) {
-      try {
-        const cleanedData = transformData(tabNewIncCsv)
-        console.log(cleanedData[0]);    
-
-      } catch (err) {
-        console.error("❌ Erreur lors de la synchro :", err)
-      }
-      /*
       try {
         const cleanedData = transformData(dataCsvIncident)
         
@@ -280,12 +282,17 @@ const DivPageTracker_Supabase = () => {
           })
 
         if (error) throw error
-        console.log("✅ Synchronisation réussie :", data)
+          console.log("✅ Synchronisation réussie :", data)
       } catch (err) {
         console.error("❌ Erreur lors de la synchro :", err)
       }
-        */
+        
     }
+    /*
+    tabNewIncCsv.forEach((row,i) => {
+      console.log(i, row)
+    })   */
+     console.log("dataCsvIncident[13] ",tabNewIncCsv[13]);    
 
     syncIncidents(tabNewIncCsv);
 
@@ -372,9 +379,8 @@ const DivPageTracker_Supabase = () => {
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Opened.split(" ")[0]}</td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Number}</td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Type}</td>
-                <td style={{ border: "1px solid black", padding: 5 }} >{row.Cots}</td>
-                <td style={{ border: "1px solid black", padding: 5 }} >{row.Service}</td>
-                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Status}</td>
+                <td style={{ border: "1px solid black", padding: 5 }} >{row.Application}</td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.State}</td>
                 <td style={{ border: "1px solid black", padding: 5,}} >{row["Assigned to"]}</td>
                 <td style={{ border: "1px solid black", padding: 5 }} >{row["Requested for"]}</td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >
