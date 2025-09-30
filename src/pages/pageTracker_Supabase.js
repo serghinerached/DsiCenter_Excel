@@ -12,6 +12,7 @@ const DivPageTracker_Supabase = () => {
   const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1).toString().padStart(2, '0'));
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedType, setSelectedType] = useState("");
+  const [needFilter, setNeedFilter] = useState(true);
   const [needUpdate, setNeedUpdate] = useState(true);
   const [dateLastImport, SetDateLastImport] = useState();
   const hiddenFileInput = useRef(null);
@@ -56,9 +57,9 @@ const DivPageTracker_Supabase = () => {
       }
 
       if (allData.length > 0) {
-        SetDateLastImport((allData[1]["Last import"]).split(" ")[0]);
+        SetDateLastImport(new Date(allData[1]["Last_import"]).toLocaleDateString("fr-FR"));
         setOriginalData(allData);
-        setNeedUpdate(true);
+        setNeedFilter(true);
       }
     };
 
@@ -68,8 +69,8 @@ const DivPageTracker_Supabase = () => {
   //-------------------------
  
   const filterByYearMonthOrWeek = (data, mois, annee,week,type) => {
-      const year = `/${annee}`
-      const yearMonthSearch = `/${mois}/${annee}`; // `${annee}-${mois}-`;
+      const year = `${annee}-`
+      const yearMonthSearch =  `${annee}-${mois}-`; // `/${mois}/${annee}`;
       console.log("yearMonthSearch=",yearMonthSearch)
 
       if(annee === "" && mois === "" && week === "" && type === "") {
@@ -115,16 +116,29 @@ const DivPageTracker_Supabase = () => {
   //--------------------------
  
   useEffect(() => {
-      if (needUpdate && originalData.length > 0) {
-          const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek,selectedType);            
-          setSupabaseTracker(filteredData); 
-          setNeedUpdate(false);
-          console.log("originalData : " + originalData.length);
-          console.log("supabaseTrackerData filtré : " + supabaseTrackerData.length);
-
+      if( originalData.length > 0) {
+        if (needFilter) {
+            alert("needFilter")
+            const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek,selectedType);            
+            setSupabaseTracker(filteredData); 
+            setNeedFilter(false);
+            console.log("originalData : " + originalData.length);
+            console.log("originalData[0] : " + originalData[0].Number + " : " + originalData[0].Opened);
+            console.log("supabaseTrackerData filtré : " + supabaseTrackerData.length);
+        } else {
+          if (needUpdate) {
+            alert("needUpdate")
+            const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek,selectedType);            
+            setSupabaseTracker(filteredData); 
+            setNeedUpdate(false);
+            console.log("originalData : " + originalData.length);
+            console.log("originalData[0] : " + originalData[0].Number + " : " + originalData[0].Opened);
+            console.log("supabaseTrackerData filtré : " + supabaseTrackerData.length);
+          }
+        } 
       }
 
-  }, [needUpdate, selectedMonth, selectedYear, originalData]);
+  }, [needFilter, selectedMonth, selectedYear, originalData]);
  
   //--------------------------
 
@@ -159,8 +173,8 @@ const DivPageTracker_Supabase = () => {
   };
 
   // BOUTON UPDATE
-  const handleUpdateClick = () => {
-    setNeedUpdate(true);
+  const handleFilterClick = () => {
+    setNeedFilter(true);
   };
 
   // BOUTON IMPORT
@@ -174,11 +188,6 @@ const DivPageTracker_Supabase = () => {
     // Vous pouvez lire le fichier ici avec FileReader ou l'envoyer au serveur
   };
 
-    // CONVERT NUMBER TO DATE STRING
-  const convertNumberToDateString = (supabaseTrackerDateNumber) => {
-    const baseDate = new Date(1900, 0, 1);
-    return (new Date(baseDate.getTime() + (supabaseTrackerDateNumber - 2) * 86400000)).toLocaleDateString();
-  }
 
   var columns = supabaseTrackerData[0] // recup colonnes et on enlève la dernière 
   ? Object.keys(supabaseTrackerData[0]) 
@@ -210,6 +219,8 @@ const DivPageTracker_Supabase = () => {
     } 
 
     startUpdateTableTracker(dataCsvIncident);
+    setNeedUpdate(true);
+
 
   };
 
@@ -270,29 +281,42 @@ const DivPageTracker_Supabase = () => {
       })
     } // end transformData
 
+
       // Fonction pour insérer ou mettre à jour dans Supabase
     async function syncIncidents(tabNewIncCsv) {
       try {
         const cleanedData = transformData(dataCsvIncident)
-        
+
+        const rows = cleanedData.map(row => {
+        const fixDate = (d) => d ? new Date(d.replace(" ", "T")).toISOString() : null;
+        const { Id, id, ...rest } = row; // retire id s'il existe
+
+          return {
+            ...rest,
+            Opened: fixDate(row.Opened),
+            Resolved: fixDate(row.Resolved),
+            Closed: fixDate(row.Closed),
+            Last_import: fixDate(row.Last_import)
+          };
+        });
+
+        // 4️⃣ Ajuster la séquence Id côté Supabase/Postgres
+        // ⚠️ À exécuter une seule fois côté serveur
+        await supabase.rpc('set_tracker_id_seq');
+
         const { data, error } = await supabase
           .from("Tracker")
-          .upsert(cleanedData, {
-            onConflict: ["Number"], // ⚡ doit être UNIQUE en base
-          })
+          .upsert(rows, { onConflict: ["Number"] });
 
-        if (error) throw error
-          console.log("✅ Synchronisation réussie :", data)
+        if (error) throw error;
+        console.log("✅ Synchronisation batch terminée :", data);
+
+
       } catch (err) {
-        console.error("❌ Erreur lors de la synchro :", err)
+        console.error("❌ Erreur lors de la synchro :", err);
       }
-        
+            
     }
-    /*
-    tabNewIncCsv.forEach((row,i) => {
-      console.log(i, row)
-    })   */
-     console.log("dataCsvIncident[13] ",tabNewIncCsv[13]);    
 
     syncIncidents(tabNewIncCsv);
 
@@ -354,7 +378,7 @@ const DivPageTracker_Supabase = () => {
         </select>
       </label>
  
-        <button style={styles.btnUpdate} onClick={handleUpdateClick}>
+        <button style={styles.btnUpdate} onClick={handleFilterClick}>
           Filter  
         </button>
  
@@ -374,9 +398,8 @@ const DivPageTracker_Supabase = () => {
           </thead>
            {supabaseTrackerData.map((row) => (
               <tr style={{fontSize:"13px" }}> 
-                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Id}</td>
                 <td style={{ border: "1px solid black", padding: 5 ,textAlign:"center"}} >{row.Week}</td>
-                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Opened.split(" ")[0]}</td>
+                <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{new Date(row.Opened).toLocaleDateString("fr-FR")}</td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Number}</td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Type}</td>
                 <td style={{ border: "1px solid black", padding: 5 }} >{row.Application}</td>
@@ -384,10 +407,10 @@ const DivPageTracker_Supabase = () => {
                 <td style={{ border: "1px solid black", padding: 5,}} >{row["Assigned to"]}</td>
                 <td style={{ border: "1px solid black", padding: 5 }} >{row["Requested for"]}</td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >
-                  {row.Resolved && row.Resolved !== "NULL" ? row.Resolved.split(" ")[0] : ""}
+                  {row.Resolved && row.Resolved !== "NULL" ? new Date(row.Resolved).toLocaleDateString("fr-FR") : ""}
                 </td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >
-                  {row.Closed ? row.Closed.split(" ")[0] : ""}
+                  {row.Closed && row.Closed !== "NULL" ? new Date(row.Closed).toLocaleDateString("fr-FR") : ""}
                 </td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Priority}</td>
                 <td style={{ border: "1px solid black", padding: 5,textAlign:"center" }} >{row.Reopen}</td>
