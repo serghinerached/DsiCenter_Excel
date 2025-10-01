@@ -13,15 +13,14 @@ const DivPageTracker_Supabase = () => {
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [needFilter, setNeedFilter] = useState(true);
-  const [needUpdate, setNeedUpdate] = useState(true);
+  const [needUpdate, setNeedUpdate] = useState(false);
   const [dateLastImport, SetDateLastImport] = useState();
   const hiddenFileInput = useRef(null);
   const [dataCsvIncident, setDataCsvIncident] = useState([]);
 
 
-  //------------------------------------------
-  useEffect(() => {
-
+  // FONCTION IMPORT TRACKER
+  const getTrackerDatas = () => {
     // Get Date Today
     const fToday = () => {
       const dateTodayString = new Date().toLocaleDateString("fr-FR");
@@ -64,8 +63,13 @@ const DivPageTracker_Supabase = () => {
     };
 
     fetchAllData();
+  }
 
-  }, []); // end useeffect
+
+  //------------------------------------------
+  useEffect(() => {
+    getTrackerDatas();
+  }, []); 
   //-------------------------
  
   const filterByYearMonthOrWeek = (data, mois, annee,week,type) => {
@@ -116,29 +120,24 @@ const DivPageTracker_Supabase = () => {
   //--------------------------
  
   useEffect(() => {
+      //alert("useeffect 2 : FILTRAGE et needFilter="+ needFilter + " et needUpdate="+ needUpdate  )    
       if( originalData.length > 0) {
-        if (needFilter) {
-            alert("needFilter")
+        console.log("-----------------");
+              console.log("needFilter="+ needFilter + " et needUpdate="+ needUpdate )
+        if (needFilter || needUpdate) {
+            if(needUpdate) {
+              console.log("2 originalData.length : " + originalData.length)
+            }
             const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek,selectedType);            
             setSupabaseTracker(filteredData); 
             setNeedFilter(false);
-            console.log("originalData : " + originalData.length);
-            console.log("originalData[0] : " + originalData[0].Number + " : " + originalData[0].Opened);
-            console.log("supabaseTrackerData filtré : " + supabaseTrackerData.length);
-        } else {
-          if (needUpdate) {
-            alert("needUpdate")
-            const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek,selectedType);            
-            setSupabaseTracker(filteredData); 
             setNeedUpdate(false);
             console.log("originalData : " + originalData.length);
-            console.log("originalData[0] : " + originalData[0].Number + " : " + originalData[0].Opened);
             console.log("supabaseTrackerData filtré : " + supabaseTrackerData.length);
-          }
         } 
       }
 
-  }, [needFilter, selectedMonth, selectedYear, originalData]);
+  }, [needFilter,needUpdate, selectedMonth, selectedYear, originalData]);
  
   //--------------------------
 
@@ -221,6 +220,38 @@ const DivPageTracker_Supabase = () => {
     startUpdateTableTracker(dataCsvIncident);
     setNeedUpdate(true);
 
+   const fetchAllData = async () => {
+      let allData = [];
+      const chunkSize = 1000;
+      let from = 0;
+      let more = true;
+
+      while (more) {
+        const { data, error } = await supabase
+          .from("Tracker")
+          .select("*")
+          .range(from, from + chunkSize - 1);
+
+        if (error) {
+          console.error("Erreur Supabase :", error);
+          break;
+        }
+
+        allData = [...allData, ...data];
+        from += chunkSize;
+        more = data.length === chunkSize; // s'il y avait moins de 1000 lignes, on a fini
+      }
+
+      console.log("allData.length : " + allData.length);
+      if (allData.length > 0) {
+        SetDateLastImport(new Date(allData[1]["Last_import"]).toLocaleDateString("fr-FR"));
+        setOriginalData(allData);
+        setNeedUpdate(false);
+        setNeedFilter(true);
+      }
+    };
+
+    fetchAllData();
 
   };
 
@@ -288,8 +319,8 @@ const DivPageTracker_Supabase = () => {
         const cleanedData = transformData(dataCsvIncident)
 
         const rows = cleanedData.map(row => {
-        const fixDate = (d) => d ? new Date(d.replace(" ", "T")).toISOString() : null;
-        const { Id, id, ...rest } = row; // retire id s'il existe
+          const fixDate = (d) => d ? new Date(d.replace(" ", "T")).toISOString() : null;
+          const { Id, id, ...rest } = row; // retire id s'il existe
 
           return {
             ...rest,
@@ -307,10 +338,9 @@ const DivPageTracker_Supabase = () => {
         const { data, error } = await supabase
           .from("Tracker")
           .upsert(rows, { onConflict: ["Number"] });
-
+        
         if (error) throw error;
         console.log("✅ Synchronisation batch terminée :", data);
-
 
       } catch (err) {
         console.error("❌ Erreur lors de la synchro :", err);
@@ -328,7 +358,7 @@ const DivPageTracker_Supabase = () => {
   return (
     <div style={styles.divImport} >
 
-      <div>
+      <div style={{marginBottom:"5px"}}>
       {/* Bouton personnalisé */}
        <input
         type="file"
@@ -337,10 +367,10 @@ const DivPageTracker_Supabase = () => {
       />
     </div>
 
-      <input type="file" ref={hiddenFileInput} onClick={handleChangeFile} style={{ display: 'none' }}  /> <br/>  
+      <input type="file" ref={hiddenFileInput} onClick={handleChangeFile} style={{ display: 'none' }}  /> 
       <button style={styles.btnImport} onClick={UpdateTableTracker}>Update</button>
       
-      <p style={styles.p2}> Last update : {dateLastImport}</p><br></br>
+      <p style={{marginBottom:"8px",...styles.p2}}> Last update : {dateLastImport}</p><br></br>
       
       <label style={{marginRight:15}}>Year&nbsp;
         <select id="selectYear" value={selectedYear} onChange={handleSelectYearChange} >
