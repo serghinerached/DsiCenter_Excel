@@ -19,19 +19,17 @@ const DivPageTracker_Supabase = () => {
   const [dataCsvIncident, setDataCsvIncident] = useState([]);
 
 
+  //get today
+  const fToday = () => {
+    const dateTodayString = new Date().toLocaleDateString("fr-FR");
+    const YearToday = dateTodayString.split("/")[2];
+    setSelectedYear(YearToday);
+    const monthToday = dateTodayString.split("/")[1];
+    setSelectedMonth(monthToday);
+  };
+
   // FONCTION IMPORT TRACKER
   const getTrackerDatas = () => {
-    // Get Date Today
-    const fToday = () => {
-      const dateTodayString = new Date().toLocaleDateString("fr-FR");
-      return dateTodayString;
-    };
-
-    const today = fToday();
-    const YearToday = today.split("/")[2];
-    setSelectedYear(YearToday);
-    const monthToday = today.split("/")[1];
-    setSelectedMonth(monthToday);
 
     const fetchAllData = async () => {
       let allData = [];
@@ -68,6 +66,7 @@ const DivPageTracker_Supabase = () => {
 
   //------------------------------------------
   useEffect(() => {
+    fToday();
     getTrackerDatas();
   }, []); 
   //-------------------------
@@ -121,20 +120,11 @@ const DivPageTracker_Supabase = () => {
  
   useEffect(() => {
       //alert("useeffect 2 : FILTRAGE et needFilter="+ needFilter + " et needUpdate="+ needUpdate  )    
-      if( originalData.length > 0) {
-        console.log("-----------------");
-              console.log("needFilter="+ needFilter + " et needUpdate="+ needUpdate )
-        if (needFilter || needUpdate) {
-            if(needUpdate) {
-              console.log("2 originalData.length : " + originalData.length)
-            }
+      if( originalData.length > 0 && (needFilter || needUpdate)) {
             const filteredData = filterByYearMonthOrWeek(originalData, selectedMonth, selectedYear,selectedWeek,selectedType);            
             setSupabaseTracker(filteredData); 
             setNeedFilter(false);
             setNeedUpdate(false);
-            console.log("originalData : " + originalData.length);
-            console.log("supabaseTrackerData filtré : " + supabaseTrackerData.length);
-        } 
       }
 
   }, [needFilter,needUpdate, selectedMonth, selectedYear, originalData]);
@@ -219,39 +209,7 @@ const DivPageTracker_Supabase = () => {
 
     startUpdateTableTracker(dataCsvIncident);
     setNeedUpdate(true);
-
-   const fetchAllData = async () => {
-      let allData = [];
-      const chunkSize = 1000;
-      let from = 0;
-      let more = true;
-
-      while (more) {
-        const { data, error } = await supabase
-          .from("Tracker")
-          .select("*")
-          .range(from, from + chunkSize - 1);
-
-        if (error) {
-          console.error("Erreur Supabase :", error);
-          break;
-        }
-
-        allData = [...allData, ...data];
-        from += chunkSize;
-        more = data.length === chunkSize; // s'il y avait moins de 1000 lignes, on a fini
-      }
-
-      console.log("allData.length : " + allData.length);
-      if (allData.length > 0) {
-        SetDateLastImport(new Date(allData[1]["Last_import"]).toLocaleDateString("fr-FR"));
-        setOriginalData(allData);
-        setNeedUpdate(false);
-        setNeedFilter(true);
-      }
-    };
-
-    fetchAllData();
+    getTrackerDatas();
 
   };
 

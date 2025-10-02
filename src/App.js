@@ -6,6 +6,7 @@ import GuideRequestsComponent from "./components/GuideRequestsComponent";
 import GuideRequestsMessagesComponent from "./components/GuideRequestsMessagesComponent";
 import GuideIncidentsComponent from "./components/GuideIncidentsComponent"
 import GuideIncidentsMessageComponent from "./components/GuideIncidentsMessagesComponent"
+import GuideRequestVsLicenseKeyComponent from "./components/GuideRequestsVsLicenseKeyComponent"
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Sidebar />
       <Routes>
         <Route path="/tracker" element={<TrackerComponent />} /> 
-        <Route path="/Guides/requests" element={<GuideRequestsComponent />} /> 
+        <Route path="/Guides/AccessRequests" element={<GuideRequestsComponent />} /> 
+        <Route path="/Guides/VsLicenseKey" element={<GuideRequestVsLicenseKeyComponent />} /> 
         <Route path="/Guides/requestsMessages/:id" element={<GuideRequestsMessagesComponent />} /> 
         <Route path="/Guides/Incidents" element={<GuideIncidentsComponent />} /> 
         <Route path="/Guides/incidentsMessages/:id" element={<GuideIncidentsMessageComponent/>} /> 

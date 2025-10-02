@@ -28,7 +28,19 @@ export const SidebarData = [
         title: "Requests",
         path: "/Guides/requests",
         icon: <FaIcons.FaCalculator />,
-        cName: "sub-nav",
+        subNav: [
+        {
+          title: "Access",
+          path: "/Guides/AccessRequests",
+          icon: <FaIcons.FaCalculator />,
+          cName: "sub-nav",
+        },
+        {
+          title: "VS license key",
+          path: "/Guides/VsLicenseKey",
+          icon: <FaIcons.FaCalculator />,
+        }
+    ],
       },
       {
         title: "Incidents",
