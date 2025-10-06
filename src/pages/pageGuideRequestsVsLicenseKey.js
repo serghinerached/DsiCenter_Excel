@@ -61,8 +61,8 @@ function DivPageGuideRequestVsLicenseKey() {
 
                     <line x1="221" y1="180" x2="241" y2="180" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="245" y="160" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="275" y="185" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2C" }))}>Msg 2C</text>
-                    
+                    <text x="275" y="185" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2E" }))}>
+                      Msg 2E</text>
                     <line x1="153" y1="200" x2="153" y2="220" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="125" y="220" width="60" height="40" fill="cyan" stroke="black" />
                     <text x="155" y="245" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6B" }))}>Msg 6B</text>
@@ -74,43 +74,57 @@ function DivPageGuideRequestVsLicenseKey() {
 
                     <line x1="563" y1="180" x2="563" y2="140" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="535" y="100" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="565" y="125" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2D" }))}>Msg 2D</text>
+                    <text x="565" y="125" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2F" }))}>
+                      Msg 2F</text>
                     <line x1="535" y1="120" x2="160" y2="153" stroke="black" markerEnd="url(#arrow)" />
-
 
                     <line x1="153" y1="260" x2="153" y2="280" stroke="black"  markerEnd="url(#arrow)" />     
                     <polygon points="153,280 283,300 153,325 23,300" fill={"orange"} />
                     <text x="153" y="306" textAnchor="middle" fill="black">Admin rights ?</text>
 
+                    <line x1="153" y1="325" x2="153" y2="355" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="125" y="355" width="65" height="40" fill="cyan" stroke="black" />
+                    <text x="157" y="377" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6C" }))}>Msg 6C</text>
 
-                    <line x1="153" y1="325" x2="153" y2="345" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="125" y="345" width="60" height="40" fill="cyan" stroke="black" />
-                    <text x="155" y="367" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6C" }))}>Msg 6C</text>
-
-                    <line x1="153" y1="385" x2="153" y2="405" stroke="black"  markerEnd="url(#arrow)" />
-                    <rect x="123" y="407" width="70" height="35" fill="pink" stroke="black" />
-                    <text x="155" y="427" textAnchor="middle" fill="black">Resolve</text>
+                    <line x1="153" y1="395" x2="153" y2="425" stroke="black"  markerEnd="url(#arrow)" />
+                    <rect x="125" y="427" width="65" height="40" fill="lightgreen" stroke="black" />
+                    <text x="157" y="449" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6D" }))}>
+                      Msg 6D</text>
+                    <line x1="153" y1="467" x2="153" y2="497" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="123" y="500" width="70" height="35" fill="pink" stroke="black" />
+                    <text x="155" y="522" textAnchor="middle" fill="black">Resolve</text>
 
                     <line x1="277" y1="300" x2="307" y2="300" stroke="black"  markerEnd="url(#arrow)" />
                     <polygon points="389,270 469,300 389,340 308,300" fill={"orange"} />
                     <text x="389" y="306" textAnchor="middle" fill="black">Airbus Site ?</text>
 
                     <line x1="389" y1="340" x2="389" y2="370" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="350" y="373" width="77" height="50" fill="cyan" stroke="black" />
-                    <text x="390" y="395" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 5A" }))}>
-                      Msg 5A<tspan x="390" dy="1em">(Techbar)</tspan>
-                    </text>
-                    <line x1="396" y1="590" x2="396" y2="618" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="350" y="373" width="77" height="40" fill="cyan" stroke="black" />
+                    <text x="390" y="399" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6E" }))}>
+                      Msg 6E</text>
+
+                    <line x1="389" y1="412" x2="389" y2="442" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="350" y="444" width="77" height="40" fill="lightgreen" stroke="black" />
+                    <text x="390" y="467" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6G" }))}>
+                      Msg 6G</text>
 
                     <line x1="467" y1="300" x2="467" y2="370" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="450" y="373" width="77" height="50" fill="cyan" stroke="black" />
-                    <text x="488" y="393" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 5B" }))}>
-                      Msg 5B<tspan x="488" dy="1em">(Remote)</tspan>
+                    <text x="488" y="393" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6F" }))}>
+                      Msg 6F<tspan x="488" dy="1em">(Remote)</tspan>
                     </text>
-                    <line x1="474" y1="590" x2="474" y2="618" stroke="black" markerEnd="url(#arrow)" />
 
-                    <line x1="474" y1="620" x2="160" y2="620" stroke="black"  />
-                    <line x1="160" y1="620" x2="160" y2="553" stroke="black"  markerEnd="url(#arrow)" />
+                    <line x1="474" y1="422" x2="474" y2="442" stroke="black" markerEnd="url(#arrow)" />
+                    <rect x="450" y="446" width="65" height="40" fill="lightgreen" stroke="black" />
+                    <text x="483" y="470" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6H" }))}>
+                      Msg 6H
+                    </text>
+
+                    <line x1="389" y1="485" x2="389" y2="570" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="474" y1="485" x2="474" y2="570" stroke="black" markerEnd="url(#arrow)" />
+
+                    <line x1="474" y1="572" x2="153" y2="572" stroke="black"  />
+                    <line x1="153" y1="572" x2="153" y2="538" stroke="black"  markerEnd="url(#arrow)" />
 
 
                     <defs>
