@@ -6,6 +6,7 @@ import DivPageGuideIncidentsPullUserIssue from './pageGuideIncidentsPullUserIssu
 import DivPageGuideIncidentsPullUserInstallation from './pageGuideIncidentsPullUserInstallation';
 import DivPageGuideIncidentsRemoteControlInstallation from './pageGuideIncidentsRemoteControlInstallation';
 import DivPageGuideIncidentsRemoteControlIssue from './pageGuideIncidentsRemoteControlIssue';
+import DivPageGuideIncidentsVSCodeInstallation from './pageGuideIncidentsVSCodeInstallation';
 
 function DivPageGuideIncidents() {
   const [draftMode, setDraftMode] = useState("");
@@ -14,7 +15,7 @@ function DivPageGuideIncidents() {
   const [selectedMode, setSelectedMode] = useState("");
   const [selectedTypeIssue, setSelectedTypeIssue] = useState("");
 
-  const tabLibMode = ["Free", "Pull User", "Remote Control"];
+  const tabLibMode = ["Free", "Pull User", "Remote Control","Visual studio code"];
   const tabTypeIssue = ["Installation/Uninstallation", "Issue"];
 
   // Mise à jour provisoire
@@ -58,32 +59,39 @@ function DivPageGuideIncidents() {
       <button style={styles.btnOk} onClick={handleUpdateClick}>OK</button>
 
       {/* Affichage conditionnel uniquement si validé */}
-      {selectedMode === "Free" && selectedTypeIssue === "Issue" && (
+      {selectedMode === "Free" && selectedTypeIssue === "Issue" && 
+      (
         <DivPageGuideIncidentsFreeIssue />
       )}
 
-      {selectedMode === "Free" && selectedTypeIssue === "Installation/Uninstallation" && (
-          <DivPageGuideIncidentsFreeInstallation />
-        )}
+      {selectedMode === "Free" && selectedTypeIssue === "Installation/Uninstallation" && 
+      (
+        <DivPageGuideIncidentsFreeInstallation />
+      )}
 
-       {/* Affichage conditionnel uniquement si validé */}
-      {selectedMode === "Pull User" && selectedTypeIssue === "Issue" && (
+      {selectedMode === "Pull User" && selectedTypeIssue === "Issue" && 
+      (
         <DivPageGuideIncidentsPullUserIssue />
       )}
 
-      {/* Affichage conditionnel uniquement si validé */}
-      {selectedMode === "Pull User" && selectedTypeIssue === "Installation/Uninstallation" && (
+      {selectedMode === "Pull User" && selectedTypeIssue === "Installation/Uninstallation" && 
+      (
         <DivPageGuideIncidentsPullUserInstallation />
       )}
 
-      {/* Affichage conditionnel uniquement si validé */}
-      {selectedMode === "Remote Control" && selectedTypeIssue === "Installation/Uninstallation" && (
+      {selectedMode === "Remote Control" && selectedTypeIssue === "Installation/Uninstallation" && 
+      (
         <DivPageGuideIncidentsRemoteControlInstallation />
       )}
 
-      {/* Affichage conditionnel uniquement si validé */}
-      {selectedMode === "Remote Control" && selectedTypeIssue === "Issue" && (
+      {selectedMode === "Remote Control" && selectedTypeIssue === "Issue" && 
+      (
         <DivPageGuideIncidentsRemoteControlIssue />
+      )}
+
+      {selectedMode === "Visual studio code" && selectedTypeIssue === "Installation/Uninstallation" && 
+      (
+        <DivPageGuideIncidentsVSCodeInstallation />
       )}
 
     </div>
