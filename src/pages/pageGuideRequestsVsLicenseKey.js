@@ -37,7 +37,7 @@ function DivPageGuideRequestVsLicenseKey() {
       }
   
   
-  //-----
+  //-----page 
   
    return   <div style={styles.divImport}>
               <h2 style={styles.title3}>Requests Visual Studio license key</h2>
