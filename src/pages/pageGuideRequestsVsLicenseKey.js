@@ -100,8 +100,8 @@ function DivPageGuideRequestVsLicenseKey() {
 
                     <line x1="389" y1="340" x2="389" y2="370" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="350" y="373" width="77" height="40" fill="cyan" stroke="black" />
-                    <text x="390" y="399" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6E" }))}>
-                      Msg 6E</text>
+                    <text x="390" y="390" textAnchor="middle" fill="black" style={{ cursor: "pointer"}} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6E" }))}>
+                      Msg 6E<tspan x="390" dy="1em">(Techbar)</tspan></text>
 
                     <line x1="389" y1="412" x2="389" y2="442" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="350" y="444" width="77" height="40" fill="lightgreen" stroke="black" />
@@ -111,15 +111,15 @@ function DivPageGuideRequestVsLicenseKey() {
                     <line x1="467" y1="300" x2="467" y2="370" stroke="black" markerEnd="url(#arrow)" />
                     <rect x="450" y="373" width="77" height="50" fill="lightgreen" stroke="black" />
                     <text x="488" y="393" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6F" }))}>
-                      Msg 6F<tspan x="488" dy="1em">(Remote)</tspan>
+                      Msg 6F<tspan x="488" dy="1em">(SCCM)</tspan>
                     </text>
 
                     
 
                     <line x1="389" y1="485" x2="389" y2="570" stroke="black" markerEnd="url(#arrow)" />
-                    <line x1="474" y1="485" x2="474" y2="570" stroke="black" markerEnd="url(#arrow)" />
+                    <line x1="467" y1="422" x2="467" y2="570" stroke="black" markerEnd="url(#arrow)" />
 
-                    <line x1="474" y1="572" x2="153" y2="572" stroke="black"  />
+                    <line x1="470" y1="572" x2="153" y2="572" stroke="black"  />
                     <line x1="153" y1="572" x2="153" y2="538" stroke="black"  markerEnd="url(#arrow)" />
 
 

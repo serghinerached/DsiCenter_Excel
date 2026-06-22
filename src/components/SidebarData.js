@@ -4,6 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import * as RiIcons from "react-icons/ri";
   
 export const SidebarData = [
+  /*
   {
     title: "Tracker",
     path: "/tracker",
@@ -19,6 +20,7 @@ export const SidebarData = [
     path: "/planning",
     icon: <FaIcons.FaCalendar />,
   },
+  */
   {
     title: "Guides",
     path: "/Guides",
