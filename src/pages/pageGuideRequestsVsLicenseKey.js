@@ -109,16 +109,12 @@ function DivPageGuideRequestVsLicenseKey() {
                       Msg 6G</text>
 
                     <line x1="467" y1="300" x2="467" y2="370" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="450" y="373" width="77" height="50" fill="cyan" stroke="black" />
+                    <rect x="450" y="373" width="77" height="50" fill="lightgreen" stroke="black" />
                     <text x="488" y="393" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6F" }))}>
                       Msg 6F<tspan x="488" dy="1em">(Remote)</tspan>
                     </text>
 
-                    <line x1="474" y1="422" x2="474" y2="442" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="450" y="446" width="65" height="40" fill="lightgreen" stroke="black" />
-                    <text x="483" y="470" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 6H" }))}>
-                      Msg 6H
-                    </text>
+                    
 
                     <line x1="389" y1="485" x2="389" y2="570" stroke="black" markerEnd="url(#arrow)" />
                     <line x1="474" y1="485" x2="474" y2="570" stroke="black" markerEnd="url(#arrow)" />
