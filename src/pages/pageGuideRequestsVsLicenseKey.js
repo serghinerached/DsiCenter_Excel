@@ -73,10 +73,9 @@ function DivPageGuideRequestVsLicenseKey() {
                     <line x1="455" y1="210" x2="187" y2="245" stroke="black" markerEnd="url(#arrow)" />
 
                     <line x1="563" y1="180" x2="563" y2="140" stroke="black" markerEnd="url(#arrow)" />
-                    <rect x="535" y="100" width="60" height="40" fill="cyan" stroke="black" />
+                    <rect x="535" y="100" width="60" height="40" fill="red" stroke="black" />
                     <text x="565" y="125" textAnchor="middle" fill="black" style={{ cursor: "pointer" }} onClick={(e) => setForm((prev) => ({ ...prev, open:true,nameMessage: "Msg 2F" }))}>
                       Msg 2F</text>
-                    <line x1="535" y1="120" x2="160" y2="153" stroke="black" markerEnd="url(#arrow)" />
 
                     <line x1="153" y1="260" x2="153" y2="280" stroke="black"  markerEnd="url(#arrow)" />     
                     <polygon points="153,280 283,300 153,325 23,300" fill={"orange"} />
