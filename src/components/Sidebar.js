@@ -6,6 +6,8 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
+import logoProdigiup from "../images/logoProdigiup.png";
+
   
 const Nav = styled.div`
   background: #15171c;
@@ -61,27 +63,35 @@ const Sidebar = () => {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
+
         <Nav>
           <NavIcon to="#">
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
-          <h1
-            style={{ textAlign: "left", 
-                     marginLeft: "170px", 
+         
+          <div style={{ display: 'flex', marginLeft: '150px' }}>
+            <img src={logoProdigiup} alt="Logo" style={{ height: '80px' }} />
+          </div>
+
+          <h2
+            style={{ textAlign: "right", 
+                      marginLeft: "20px",
                      color: "white",
                      fontWeight:"bold"
                     }}
-          >DSI CENTER (React)</h1>
-          <h2
+          >E2EPLM - Service center
+          </h2>
+          <h3
             style={{ textAlign: "right", 
-                     marginLeft: "700px", 
+                     marginLeft: "500px", 
                      color: "white",
                      fontWeight:"bold"
                     }}
           >
             {fToday()}  {fCurrentTime()} 
-          </h2>
+          </h3>
         </Nav>
+
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
             <NavIcon to="#">
