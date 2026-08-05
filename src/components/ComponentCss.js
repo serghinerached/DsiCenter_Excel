@@ -122,7 +122,28 @@ export const styles = {
     border:"1px solid black",
     padding:"5px",
     whiteSpace: "pre-line"
-  }
+  },
+
+  divPageGuideRequests:{
+    marginLeft:'230px',
+    marginBottom:'5px',
+    textAlign:'center',
+
+  },
+
+  tableRequests:{
+    borderCollapse : 'collapse'
+  },  
+  tdTabHistorical:{
+    border:'1px solid black',
+    padding:5,
+    textAlign:"left",
+  },
+  tdHistMessages: {
+    border:"1px solid black",
+    padding:"5px",
+    textAlign:"left"
+  },
   }
 
 

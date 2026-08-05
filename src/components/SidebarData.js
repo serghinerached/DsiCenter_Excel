@@ -29,29 +29,48 @@ export const SidebarData = [
       {
         title: "Requests",
         path: "/Guides/requests",
-        icon: <FaIcons.FaCalculator />,
+        icon: <FaIcons.FaBook />,
         subNav: [
-        {
-          title: "Access",
-          path: "/Guides/AccessRequests",
-          icon: <FaIcons.FaCalculator />,
-          cName: "sub-nav",
-        },
-        {
-          title: "VS license key",
-          path: "/Guides/VsLicenseKey",
-          icon: <FaIcons.FaCalculator />,
-        }
-    ],
+          {
+            title: "Access",
+            path: "/Guides/AccessRequests",
+            icon: <FaIcons.FaBook />,
+            cName: "sub-nav",
+          },
+          {
+            title: "VS license key",
+            path: "/Guides/VsLicenseKey",
+            icon: <FaIcons.FaBook />,
+          }
+        ],
       },
+
       {
         title: "Incidents",
-        path: "/Guides/Incidents",
-        icon: <FaIcons.FaCalculator />,
+        icon: <FaIcons.FaBook />,
+         subNav: [
+          {
+            title: "Process",
+            path: "/Guides/Process",
+            icon: <FaIcons.FaBook />,
+            cName: "sub-nav",
+          },
+          {
+            title: "K.Articles",
+            path: "/Guides/IncidentsKArticles",
+            icon: <FaIcons.FaBook />,
+          },
+          {
+            title: "Examples",
+            path: "/Guides/IncidentsExamples",
+            icon: <FaIcons.FaBook />,
+          }
+        ],
+        
       },
       {title: "Packages",
         path: "/Guides/packages",
-        icon: <FaIcons.FaCalculator />,
+        icon: <FaIcons.FaBook />,
         cName: "sub-nav",
       }
     ],
